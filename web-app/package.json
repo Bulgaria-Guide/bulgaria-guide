@@ -13,8 +13,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
-    "lint-fix": "eslint --fix src/**/*.js",
-    "format": "prettier --write src/**/*.js src/**/*.css)"
+    "lint-fix": "eslint --fix src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,10 +45,6 @@
   "lint-staged": {
     "*.+(js|jsx)": [
       "eslint --fix",
-      "git add"
-    ],
-    "*.+(json|css|md)": [
-      "prettier --write",
       "git add"
     ]
   }
