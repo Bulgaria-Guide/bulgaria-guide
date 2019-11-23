@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const View = props => (
   <div className={props.className} style={props.style}>
