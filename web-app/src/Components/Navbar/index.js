@@ -18,9 +18,6 @@ const Navbar = () => {
             <NavLink to="/sights">Обекти</NavLink>
           </li>
           <li>
-            <NavLink to="/details">Обект*</NavLink>
-          </li>
-          <li>
             <NavLink to="/login">Вход</NavLink>
           </li>
         </ul>

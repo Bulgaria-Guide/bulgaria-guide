@@ -1,10 +1,10 @@
-import React from "react";
-import Navbar from "./Components/Navbar/index";
-import Home from "./Components/Home";
-import SightsList from "./Components/Sights/List";
-import SightDetails from "./Components/Sights/Details";
-import Login from "./Components/Login";
-import { BrowserRouter, Route } from "react-router-dom";
+import React from 'react';
+import Navbar from './Components/Navbar/index';
+import Home from './Components/Home';
+import SightsList from './Components/Sights/List';
+import SightDetails from './Components/Sights/Details';
+import Login from './Components/Login';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const App = () => (
   <BrowserRouter>
