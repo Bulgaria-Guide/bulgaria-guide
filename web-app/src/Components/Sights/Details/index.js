@@ -1,25 +1,34 @@
-import React from 'react';
-import Text from '../../UI/Text';
-import View from '../../UI/View';
+import React from "react";
+import Text from "../../UI/Text";
+import ContainerLayout from "../../UI/ContainerLayout";
+// import View from '../../UI/View';
 
-const SightDetails = () => (
-    <View className="container">
-      <h1 className="center">Sight Details</h1>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla
-        convallis lorem eget mollis. Aliquam volutpat mollis risus, ut tincidunt
-        dui mattis venenatis. Etiam ultrices, nunc ullamcorper aliquet lobortis,
-        velit dolor iaculis lacus, at iaculis est mauris vitae libero. Nulla
-        aliquam dolor a velit fermentum, non ultrices elit efficitur. Ut eu
-        dictum purus. Aliquam eleifend tempor nisl, ac mollis orci consequat in.
-        Proin eget lectus pharetra, tempus justo eget, porta purus. Etiam mollis
-        molestie tempus. Donec quis ex non felis porttitor blandit non id nisl.
-        Pellentesque lobortis sed nulla vitae bibendum. Ut rhoncus posuere
-        sapien a lobortis. Pellentesque euismod orci non scelerisque molestie.
-        Aliquam posuere condimentum enim sed posuere. Vivamus lacinia nisi in
-        orci suscipit, at aliquet sem tincidunt.
-      </Text>
-    </View>
+const description =
+    "Рилският манастир е български ставропигиален манастир, един от най-значимите културни паметници в България, символ на страната, включен в списъка за световното наследство на ЮНЕСКО. Разположен е в Югозападна България, област Кюстендил, община Рила. Основан е през Х век от св. Йоан Рилски Чудотворец[1] в горното течение на Рилска река.Рилският манастир, в т.число Хрельовата кула, църквата, манастирските сгради и църквата „Свети Лука“ са обявени през 1927 г. за „народна старина“ („Държавен вестник“, бр.69 от 1927 г.).През 1968 г. Хрельовата кула е обявена за архитектурно-строителен паметник на културата от Средновековието („Държавен вестник“, бр.77 от 1968 г.). На 7-та сесия на Комитета за световно наследство към ЮНЕСКО, проведена от 5 до 9 декември 1983 г. във Флоренция (Италия), Рилският манастир е обявен за обект на световното културно наследство. В Рилския манастир се пазят ръкописи, старопечатни книги, документи от 14 век – 19 век, а в музея – много старинни предмети, като черковна утвар, жезли, икони, оръжия, монетна колекция и др. През 1992 г. Рилският манастир; Гробът на Св. Йоан Рилски, включващ църквата „Успение на Св. Йоан Рилски“ и постницата Св. Йоан Рилски; Скитът „Свети Лука“, включващ църквите „Свети Лука“ и „Свети Покров Богородичен“ и килийното училище; метохът Орлица с църквата „Св. св. Петър и Павел“; и църквата „Успение Богородично“ са обявени за групови архитектурни, исторически и художествени комплекси от национално значение, а метохът Пчелино – за групов архитектурен и исторически комплекс от местно значение („Държавен вестник“, бр.73 от 1992 г.) ",
+  sight = {
+    id: "123",
+    name: "Рилският манастир",
+    description,
+    picture_path: "/tmp/pic1",
+    workingTimeFrom: "8",
+    workingTimeTo: "20",
+    price: "12",
+    address: "община Рила, България",
+    weather: {
+      temp: 21,
+      outlook: "Предимно слънчево"
+    },
+    category: "rest"
+  },
+  SightDetails = () => (
+    <ContainerLayout header={sight.name}>
+      <Text>{`Местоположение: ${sight.address}`}</Text>
+      <Text>{`Работно време: от ${sight.workingTimeFrom} до ${sight.workingTimeTo}`}</Text>
+      <Text>{`Цена: ${sight.price} лв.`}</Text>
+      <Text>{`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C .`}</Text>
+
+      <Text>{sight.description}</Text>
+    </ContainerLayout>
   );
 
 export default SightDetails;
