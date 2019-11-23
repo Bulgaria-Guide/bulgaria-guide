@@ -1,25 +1,24 @@
-# Bulgaria Guide 
+# Bulgaria Guide
 
 # Table of Contents
 
-  - [Overview](#overview)
-  - [API](#api)
-      - [Users](#users)
-        - [Register User](#register-user)
-        - [Login](#login)
-      - [Sights](#sights)
-        - [Create](#create-sight)
-        - [Delete](#delete-sight)
-        - [Retrieve](#retrieve-sight)
-        - [Retrieve all](#retrieve-sights)
-        - [Manage](#manage-sight)
-        - [Rate](#rate-sight)
-        - [Retrieve comments](#retrieve-comments)
-      - [Comments](#users)
-        - [Create](#add-comment)
-        - [Delete](#delete-comment)
-  - [Database Model](#database-model)
-
+- [Overview](#overview)
+- [API](#api)
+  - [Users](#users)
+    - [Register User](#register-user)
+    - [Login](#login)
+  - [Sights](#sights)
+    - [Create](#create-sight)
+    - [Delete](#delete-sight)
+    - [Retrieve](#retrieve-sight)
+    - [Retrieve all](#retrieve-sights)
+    - [Manage](#manage-sight)
+    - [Rate](#rate-sight)
+    - [Retrieve comments](#retrieve-comments)
+  - [Comments](#users)
+    - [Create](#add-comment)
+    - [Delete](#delete-comment)
+- [Database Model](#database-model)
 
 ## Overview
 
@@ -41,18 +40,18 @@ Bulgaria Guide is ...
 
 ```json
 {
-	"username": "test_user",
-	"password": "password"
+  "username": "test_user",
+  "password": "password"
 }
 ```
 
 #### Response
 
-| Status Code | Description |
-| --- | --- |
-| 201 Created |  Will be returned if the user is successfully registered. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 201 Created     | Will be returned if the user is successfully registered.                |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
-| 409 Conflict | Will be returned if the user is already registered. |
+| 409 Conflict    | Will be returned if the user is already registered.                     |
 
 ### Login
 
@@ -66,8 +65,8 @@ Bulgaria Guide is ...
 
 ```json
 {
-	"username": "test_user",
-	"password": "a"
+  "username": "test_user",
+  "password": "a"
 }
 ```
 
@@ -77,14 +76,14 @@ Bulgaria Guide is ...
 
 ```json
 {
-	"token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf"
+  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf"
 }
 ```
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the user is successfully login. |
-| 401 Unauthorized | Will be returned if the user credentials are not valid.|
+| Status Code      | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| 200 OK           | Will be returned if the user is successfully login.     |
+| 401 Unauthorized | Will be returned if the user credentials are not valid. |
 
 ## Sights
 
@@ -96,7 +95,8 @@ Bulgaria Guide is ...
 
 `POST /v1/sights/create`
 
-### Authorization 
+### Authorization
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -118,11 +118,11 @@ Bulgaria Guide is ...
 
 #### Response
 
-| Status Code | Description |
-| --- | --- |
-| 201 Created |  Will be returned if the sight is successfully created. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 201 Created     | Will be returned if the sight is successfully created.                  |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
-| 409 Conflict | Will be returned if the sight is already created. |
+| 409 Conflict    | Will be returned if the sight is already created.                       |
 
 ### Delete Sight
 
@@ -133,6 +133,7 @@ Bulgaria Guide is ...
 `DELETE /v1/sights/:id/delete`
 
 ### Authorization - Admin only
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -141,9 +142,9 @@ None
 
 #### Response
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the sight is successfully deleted. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the sight is successfully deleted.                  |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 ### Retrieve Sight
@@ -155,6 +156,7 @@ None
 `GET /v1/sights/:id/retrieve`
 
 ### Authorization
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -175,17 +177,18 @@ None
   "workingTimeTo": "17",
   "price": "12",
   "address": "test-address",
+  "rating": 7.2,
   "weather": {
-    "temp": 32,
-    "outlook": sunny|cloudy...,
+    "temp": 21,
+    "outlook": "Предимно слънчево"
   },
   "category": "rest"
 }
 ```
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the operation was successful. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the operation was successful.                       |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 ### Retrieve Sights
@@ -196,12 +199,12 @@ None
 
 `GET /v1/sights/retrieve?sort=method1&category=category1&min-rating=num&isworking=bool&state=pending`
 
-*method1 = alphabetical | rating*
+_method1 = alphabetical | rating_
 
-*category1 = all | culture | historical | rest | sports*
-
+_category1 = all | culture | historical | rest | sports_
 
 ### Authorization
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -215,50 +218,65 @@ None
 ```json
 [
   {
-  "id": "123",
-  "name": "test-name",
-  "description": "test-description",
-  "picturePath": "/tmp/pic1",
-  "workingTimeFrom": "8",
-  "workingTimeTo": "17",
-  "price": "12",
-  "address": "test-address",
-  "log": "69",
-  "lat": "42",
-  "category": "rest"
-},
-{
-  "id": "123",
-  "name": "test-name",
-  "description": "test-description",
-  "picturePath": "/tmp/pic1",
-  "workingTimeFrom": "8",
-  "workingTimeTo": "17",
-  "price": "12",
-  "address": "test-address",
-  "log": "69",
-  "lat": "42",
-  "category": "rest"
-},
-{
-  "id": "123",
-  "name": "test-name",
-  "description": "test-description",
-  "picturePath": "/tmp/pic1",
-  "workingTimeFrom": "8",
-  "workingTimeTo": "17",
-  "price": "12",
-  "address": "test-address",
-  "log": "69",
-  "lat": "42",
-  "category": "rest"
- }
+    "id": "123",
+    "name": "test-name",
+    "description": "test-description",
+    "picturePath": "/tmp/pic1",
+    "workingTimeFrom": "8",
+    "workingTimeTo": "17",
+    "price": "12",
+    "address": "test-address",
+    "log": "69",
+    "lat": "42",
+    "rating": 7.2,
+    "weather": {
+      "temp": 21,
+      "outlook": "Предимно слънчево"
+    },
+    "category": "rest"
+  },
+  {
+    "id": "123",
+    "name": "test-name",
+    "description": "test-description",
+    "picturePath": "/tmp/pic1",
+    "workingTimeFrom": "8",
+    "workingTimeTo": "17",
+    "price": "12",
+    "address": "test-address",
+    "log": "69",
+    "lat": "42",
+    "rating": 7.2,
+    "weather": {
+      "temp": 21,
+      "outlook": "Предимно слънчево"
+    },
+    "category": "rest"
+  },
+  {
+    "id": "123",
+    "name": "test-name",
+    "description": "test-description",
+    "picturePath": "/tmp/pic1",
+    "workingTimeFrom": "8",
+    "workingTimeTo": "17",
+    "price": "12",
+    "address": "test-address",
+    "log": "69",
+    "lat": "42",
+    "rating": 7.2,
+    "weather": {
+      "temp": 21,
+      "outlook": "Предимно слънчево"
+    },
+    "category": "rest"
+  }
 ]
 ```
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the operation was successful. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the operation was successful.                       |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 ### Manage Sight
@@ -270,6 +288,7 @@ None
 `PATCH /v1/sights/:id/manage`
 
 ### Authorization - Admin only
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -282,9 +301,9 @@ None
 
 #### Response
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the sight is successfully added. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the sight is successfully added.                    |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 ### Rate Sight
@@ -296,6 +315,7 @@ None
 `POST /v1/sights/:id/rate`
 
 ### Authorization - Admin only
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -316,11 +336,10 @@ None
 }
 ```
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the rating is successfully added. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the rating is successfully added.                   |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
-
 
 ### Retrieve Comments
 
@@ -330,7 +349,8 @@ None
 
 `GET /v1/sights/:id/comments/retrieve`
 
-### Authorization - *Admin/Author only*
+### Authorization - _Admin/Author only_
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -344,28 +364,27 @@ None
 ```json
 [
   {
-  "id": "1",
-  "content": "test-content",
-  "author_name": "name1"
-},
-{
-  "id": "2",
-  "content": "test-content",
-   "author_name": "name1"
-},
-{
-  "id": "3",
-  "content": "test-content",
-  "author_name": "name1"
- }
+    "id": "1",
+    "content": "test-content",
+    "author_name": "name1"
+  },
+  {
+    "id": "2",
+    "content": "test-content",
+    "author_name": "name1"
+  },
+  {
+    "id": "3",
+    "content": "test-content",
+    "author_name": "name1"
+  }
 ]
 ```
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the operation was successful. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the operation was successful.                       |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
-
 
 ### Add Comment
 
@@ -376,6 +395,7 @@ None
 `POST /v1/sights/:id/comments/add`
 
 ### Authorization
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -388,9 +408,9 @@ None
 
 #### Response
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the comment is successfully added. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the comment is successfully added.                  |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 ### Delete Comment
@@ -401,7 +421,8 @@ None
 
 `DELETE /v1/sights/:id/comments/:id/delete`
 
-### Authorization - *Admin/Author only*
+### Authorization - _Admin/Author only_
+
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
@@ -410,10 +431,11 @@ None
 
 #### Response
 
-| Status Code | Description |
-| --- | --- |
-| 200 OK |  Will be returned if the comment is successfully deleted. |
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the comment is successfully deleted.                |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 # TODO
+
 Add expiration date on tokens, may store tokens in memory in java servers and on logout the token is deleted. UI should change to not logged in user when token is expired. If java stores the tokens in memory, UI needs to send logout request then java deletes the token.

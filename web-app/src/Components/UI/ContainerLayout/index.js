@@ -1,8 +1,8 @@
-import React from "react";
-import View from "../View";
+import React from 'react';
+import View from '../View';
 
 const style = {
-    "margin-top": "100px"
+    'marginTop': '100px'
   },
   ContainerLayout = props => (
     <View className="container" style={style}>

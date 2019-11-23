@@ -1,6 +1,6 @@
-import React from "react";
-import Text from "../UI/Text";
-import ContainerLayout from "../UI/ContainerLayout";
+import React from 'react';
+import Text from '../UI/Text';
+import ContainerLayout from '../UI/ContainerLayout';
 
 const Home = () => (
   <ContainerLayout header="Home">
