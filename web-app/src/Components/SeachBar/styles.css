@@ -1,0 +1,10 @@
+.search-bar {
+    border: 3px solid;
+    border-radius: 16px;
+    border-color: #4db6ac; 
+    margin-bottom: 32px;
+}
+
+#button {
+    width: 100%;
+ }
