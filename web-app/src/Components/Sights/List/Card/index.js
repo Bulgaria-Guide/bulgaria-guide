@@ -12,16 +12,16 @@ const SightCard = props => (
           alt={props.sight.name}
         />
       </div>
-      <div className="card-stacked">
-        <div className="card-content" style={{ 'paddingTop': 0 }}>
-          <h4 className="header">{`${props.sight.name}`}</h4>
-          <Text>{props.sight.description.substr(0, 135).concat('...')}</Text>
-        </div>
-        <div className="card-action">
-          <NavLink to={{
-            'pathname': '/details',
-            'sight': { ...props.sight }
-          }}>
+        <div className="card-stacked">
+          <div className="card-content" style={{ 'paddingTop': 0 }}>
+            <h4 className="header">{`${props.sight.name}`}</h4>
+            <Text>{props.sight.description.substr(0, 135).concat('...')}</Text>
+          </div>
+          <div className="card-action">
+            <NavLink to={{
+              'pathname': '/details',
+              'sight': props.sight
+            }}>
               Вижте още
           </NavLink>
         </div>
