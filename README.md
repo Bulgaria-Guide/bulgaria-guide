@@ -366,17 +366,20 @@ None
   {
     "id": "1",
     "content": "test-content",
-    "author_name": "name1"
+    "authorName": "name1",
+    "date": "24-11-2019 14:13"
   },
   {
     "id": "2",
     "content": "test-content",
-    "author_name": "name1"
+    "authorName": "name1",
+    "date": "24-11-2019 14:13"
   },
   {
     "id": "3",
     "content": "test-content",
-    "author_name": "name1"
+    "authorName": "name1",
+    "date": "24-11-2019 14:13"
   }
 ]
 ```
