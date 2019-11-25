@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PissApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PissApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PissApplication.class, args);
+    }
 
 }
