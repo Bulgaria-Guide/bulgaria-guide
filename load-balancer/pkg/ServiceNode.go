@@ -1,11 +1,11 @@
 package pkg
 
 type ServiceNode struct {
-	hostname string
+	Address string `mapstructure:"address"`
 }
 
 var _ Node = &ServiceNode{}
 
-func (sn *ServiceNode) GetServiceAddress() string {
-	return sn.hostname
+func (sn ServiceNode) GetServiceAddress() string {
+	return sn.Address
 }

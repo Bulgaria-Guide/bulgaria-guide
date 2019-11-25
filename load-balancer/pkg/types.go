@@ -3,7 +3,7 @@ package pkg
 import "net/http"
 
 type LoadBalancer interface {
-	Route(Cluster) http.Handler
+	Route(Cluster) http.HandlerFunc
 }
 
 type Node interface {
@@ -11,11 +11,9 @@ type Node interface {
 }
 
 type Cluster interface {
-	AddNode(Node) error
-	GetNodes() []Node
-	SetAffinityPolicy(AffinityPolicy)
+	GetNode() Node
 }
 
 type AffinityPolicy interface {
-	Apply([]Node) Node
+	Apply() int
 }

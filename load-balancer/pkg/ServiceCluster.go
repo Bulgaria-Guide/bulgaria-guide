@@ -1,27 +1,29 @@
 package pkg
 
+import "github.com/sirupsen/logrus"
+
 type ServiceCluster struct {
-	nodes []Node
+	nodes          []ServiceNode
+	affinityPolicy AffinityPolicy
+	log            *logrus.Entry
 }
 
 var _ Cluster = &ServiceCluster{}
 
-func (sc *ServiceCluster) AddNode(node Node) error {
-	return nil
+func NewServiceCluster(settings *ServiceClusterSettings, log *logrus.Entry) *ServiceCluster {
+	policy := NewAffinityPolicyFactory(log).NewPolicy(settings.AffinityPolicyType, len(settings.Nodes))
+	return &ServiceCluster{
+		nodes:          settings.Nodes,
+		affinityPolicy: policy,
+		log:            log,
+	}
 }
 
-func (sc *ServiceCluster) GetNodes() []Node {
-	return nil
+func (sc *ServiceCluster) GetNode() Node {
+	return sc.nodes[sc.affinityPolicy.Apply()]
 }
 
-func (sc *ServiceCluster) SetAffinityPolicy(AffinityPolicy) {
-
-}
-
-type RRPolicy struct{}
-
-var _ AffinityPolicy = RRPolicy{}
-
-func (rrp RRPolicy) Apply([]Node) Node {
-	return nil
+type ServiceClusterSettings struct {
+	Nodes              []ServiceNode `mapstructure:"nodes"`
+	AffinityPolicyType string        `mapstructure:"policy"`
 }
