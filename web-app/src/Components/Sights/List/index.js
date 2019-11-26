@@ -1,7 +1,6 @@
 import React from 'react';
 import SightCard from './Card';
-import ContainerLayout from '../../UI/ContainerLayout';
-import SearchBar from '../../SeachBar';
+import View from '../../UI/View';
 
 const description =
   // eslint-disable-next-line max-len
@@ -40,10 +39,9 @@ const SightsList = () => {
     sight => <SightCard sight={sight} key={sight.id}/>
   );
 
-  return <ContainerLayout header="Sights list">
-    <SearchBar />
+  return <View>
     {sightsList}
-  </ContainerLayout>;
+  </View>;
 };
 
 export default SightsList;
