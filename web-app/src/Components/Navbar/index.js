@@ -20,6 +20,9 @@ const Navbar = () => {
           <li>
             <NavLink to="/login">Вход</NavLink>
           </li>
+          <li>
+            <NavLink to="/admin">Администрация</NavLink>
+          </li>
         </ul>
       </View>
     </nav>
