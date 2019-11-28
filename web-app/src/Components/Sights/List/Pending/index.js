@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Text from '../../../UI/Text';
+import FloatingButton from '../../../UI/Button/Floating';
 
 const PendingSightCard = props => (
   <div className="col s12 m7">
     <div className="card horizontal">
-        
-      <a className="btn-floating halfway-fab waves-effect waves-light green" style={{right: 50, top: 5}}><i className="material-icons">&#10004;</i></a>
-      <a className="btn-floating halfway-fab waves-effect waves-light red" style={{right: 5, top: 5}}><i className="material-icons">X</i></a>
+      <FloatingButton label="&#10004;" style={{right: 50, top: 5}} color="green"/>
+      <FloatingButton label="X" style={{right: 5, top: 5}} color="red" />
       <div className="card-image">
         <img
           src="https://lorempixel.com/100/190/nature/6"
