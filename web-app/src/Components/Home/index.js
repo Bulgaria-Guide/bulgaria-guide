@@ -1,7 +1,7 @@
 import React from 'react';
 import Text from '../UI/Text';
 import ContainerLayout from '../UI/ContainerLayout';
-import SearchBar from '../SeachBar';
+import SearchBar from '../Seach/Bar';
 
 const Home = () => (
   <ContainerLayout header="Home">
