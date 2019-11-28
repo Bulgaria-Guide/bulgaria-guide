@@ -19,7 +19,7 @@ const SightCard = props => (
           </div>
           <div className="card-action">
             <NavLink to={{
-              'pathname': '/details',
+              'pathname': `/details/${props.sight.id}`,
               'sight': props.sight
             }}>
               Вижте още

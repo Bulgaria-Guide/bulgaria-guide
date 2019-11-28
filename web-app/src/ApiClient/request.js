@@ -1,5 +1,5 @@
 import axios     from 'axios';
-import constants from '../../constants/api-constants.js';
+import constants from '../constants';
 
 const client = axios.create({
   baseURL: constants.api.baseURL
@@ -34,7 +34,7 @@ const request = function(options) {
     return Promise.reject(error.response || error.message);
   }
 
-  return client(options)
+  return client()
             .then(onSuccess)
             .catch(onError);
 }
