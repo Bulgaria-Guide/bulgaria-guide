@@ -36,11 +36,11 @@ const sortDropdown = (
 );
 
 const openedOly = (
-  <div class="switch">
+  <div className="switch">
     <label>
       Покажи само отворени
       <input type="checkbox" />
-      <span class="lever"></span>
+      <span className="lever"></span>
     </label>
   </div>
 );
