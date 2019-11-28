@@ -5,7 +5,7 @@ import SightsList from '../Sights/List';
 const Administration = props => {
     return (
         <ContainerLayout header={"Администрация"}>
-          <SightsList />
+          <SightsList pending/>
         </ContainerLayout>
     );
 }
