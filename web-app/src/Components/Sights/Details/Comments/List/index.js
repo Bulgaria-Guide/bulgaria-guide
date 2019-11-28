@@ -3,7 +3,7 @@ import CommentCard from '../Card';
 import View from '../../../../UI/View';
 import constants from '../../../.././../constants';
 
-const comments = constants.comments
+const { comments } = constants;
 
 const CommentsList = () => {
   const commentsList = comments.map(
