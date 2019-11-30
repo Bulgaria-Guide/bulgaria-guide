@@ -16,10 +16,10 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
-//da dovursha posta
-//da dovawq service class
-//commenatri i baza
 
+//add optional parameters in get
+//add service layer for better abstraction
+//add patch operation
 
 @RestController
 public class SightController {
@@ -31,10 +31,11 @@ public class SightController {
     private SightRepository repository;
 
 
+    //implement exception
     @GetMapping("/v1/sights/{id}/retrieve")
-    public Sight findAll(@PathVariable("id") long id) {
-        Sight sight = repository.getOne(id);
-        return sight;
+    public Sight findAll(@PathVariable("id") Long id) {
+        return repository.findById(id)
+                .orElseThrow(RuntimeException::new);
     }
 
     //add optional arguments
@@ -45,7 +46,7 @@ public class SightController {
         return sights;
     }
 
-
+    //remove all arguments and add class on their place
     @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Sight create(@RequestParam("name") String name,
                         @RequestParam("description") String description,
@@ -56,12 +57,14 @@ public class SightController {
                         @RequestParam("address") String address,
                         @RequestParam("longitude") double longitude,
                         @RequestParam("latitude") double latitude,
-                        @RequestParam("isPending") boolean isPending
+                        @RequestParam("category") String category
     ) throws IOException {
         String newImageName = generateNewImageName(picture);
         saveUploadedFile(picture, newImageName);
         final double INITIAL_RATING = 0;
-        Sight sight = new Sight(name, description, INITIAL_RATING, newImageName, workingTimeFrom, workingTimeTo, price, address, longitude, latitude, isPending);
+        final boolean IS_PENDING_DEFAULT_STATUS = true;
+        Sight sight = new Sight(name, description, INITIAL_RATING, newImageName, workingTimeFrom, workingTimeTo, price, address,
+                longitude, latitude, category, IS_PENDING_DEFAULT_STATUS);
         return repository.save(sight);
     }
 
@@ -98,6 +101,7 @@ public class SightController {
 
     @DeleteMapping("/v1/sights/{id}/delete")
     public ResponseEntity<?> deleteSight(@PathVariable("id") long id) {
+
         return repository.findById(id)
                 .map(sight -> {
                     delete(sight.getPicture_path(), id);

@@ -6,14 +6,14 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "sight")
+@Table(name = "sightS")
 public class Sight {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -48,12 +48,15 @@ public class Sight {
     @Column(name = "is_pending")
     private boolean is_pending;
 
+    @Column(name = "category")
+    private String category;
+
     public Sight() {
 
     }
 
     public Sight(String name, String description, double rating, String picture_path, int working_time_from,
-                 int working_time_to, double price, String address, double longitude, double latitude, boolean is_pending) {
+                 int working_time_to, double price, String address, double longitude, double latitude, String category, boolean is_pending) {
         this.name = name;
         this.description = description;
         this.rating = rating;
@@ -64,6 +67,7 @@ public class Sight {
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.category = category;
         this.is_pending = is_pending;
     }
 
