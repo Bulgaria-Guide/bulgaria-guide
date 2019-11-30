@@ -24,10 +24,10 @@ export default function useRole() {
 
   const logout = useCallback(() => setRole('guest'), [setRole]);
 
-  return { 
+  return {
     isAdmin,
     isLoggedIn,
     loginAs,
-    logout,
+    logout
   };
 }

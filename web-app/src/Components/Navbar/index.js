@@ -7,7 +7,6 @@ import useRole from '../../hooks/useRole';
 const Navbar = () => {
   const title = 'Bulgaria Guide';
   const { isLoggedIn, isAdmin, logout } = useRole();
-  console.log(isLoggedIn);
 
   return (
     <nav className="nav-wrapper blue" id="sticky">
