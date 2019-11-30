@@ -2,9 +2,12 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import View from '../UI/View';
 import './styles.css';
+import useRole from '../../hooks/useRole';
 
 const Navbar = () => {
   const title = 'Bulgaria Guide';
+  const { isLoggedIn, isAdmin, logout } = useRole();
+  console.log(isLoggedIn);
 
   return (
     <nav className="nav-wrapper blue" id="sticky">
@@ -17,12 +20,21 @@ const Navbar = () => {
           <li>
             <NavLink to="/sights">Обекти</NavLink>
           </li>
-          <li>
-            <NavLink to="/login">Вход</NavLink>
-          </li>
-          <li>
-            <NavLink to="/admin">Администрация</NavLink>
-          </li>
+          {!isLoggedIn &&
+            <li>
+              <NavLink to="/login">Вход</NavLink>
+            </li>
+          }
+          {isAdmin &&
+            <li>
+              <NavLink to="/admin">Администрация</NavLink>
+            </li>
+          }
+          {isLoggedIn &&
+            <li>
+              <Link onClick={logout} to="/home">Изход</Link>
+            </li>
+          }
         </ul>
       </View>
     </nav>
