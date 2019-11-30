@@ -124,7 +124,7 @@
     "max-len": [
       "error",
       {
-        "code": 80
+        "code": 100
       }
     ],
     "max-lines": "error",
@@ -228,7 +228,6 @@
     "no-sync": "error",
     "no-tabs": "error",
     "no-template-curly-in-string": "error",
-    "no-ternary": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",
     "no-undef-init": "error",
@@ -269,7 +268,6 @@
     "prefer-numeric-literals": "error",
     "prefer-object-spread": "error",
     "prefer-promise-reject-errors": "error",
-    "prefer-reflect": "error",
     "prefer-regex-literals": "error",
     "prefer-rest-params": "error",
     "prefer-spread": "error",

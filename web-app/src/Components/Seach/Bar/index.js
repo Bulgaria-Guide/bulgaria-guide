@@ -36,11 +36,11 @@ const sortDropdown = (
 );
 
 const openedOly = (
-  <div class="switch">
+  <div className="switch">
     <label>
       Покажи само отворени
       <input type="checkbox" />
-      <span class="lever"></span>
+      <span className="lever"></span>
     </label>
   </div>
 );
@@ -57,7 +57,7 @@ const SearchBar = () => (
         <div className="input-field col s4">{sortDropdown}</div>
         <div className="input-field col s3">{openedOly}</div>
         <div className="input-field col s9">
-          <a className="waves-effect waves-light btn-large" id="button">
+          <a className="waves-effect waves-light btn-large" style={{ 'zIndex': 0 }} id="button">
             ТЪРСИ
           </a>
         </div>

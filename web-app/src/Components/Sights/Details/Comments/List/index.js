@@ -1,22 +1,9 @@
 import React from 'react';
 import CommentCard from '../Card';
 import View from '../../../../UI/View';
+import constants from '../../../.././../constants';
 
-const comments = [
-    {
-      'id': '1',
-      'content': 'test-content',
-      'authorName': 'name1'
-    }, {
-      'id': '2',
-      'content': 'test-content',
-      'authorName': 'name1'
-    }, {
-      'id': '3',
-      'content': 'test-content',
-      'authorName': 'name1'
-    }
-  ];
+const { comments } = constants;
 
 const CommentsList = () => {
   const commentsList = comments.map(
