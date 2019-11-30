@@ -6,9 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "sight")
-
-
+@Table(name = "sights")
 public class Sight {
 
 
