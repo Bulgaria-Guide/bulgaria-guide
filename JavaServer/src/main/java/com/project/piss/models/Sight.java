@@ -22,7 +22,7 @@ public class Sight {
     private String description;
 
     @Column(name = "rating")
-    private double string;
+    private double rating;
 
     @Column(name = "picture_path")
     private String picture_path;
@@ -52,12 +52,11 @@ public class Sight {
 
     }
 
-    public Sight(int id, String name, String description, double string, String picture_path, int working_time_from,
+    public Sight(String name, String description, double rating, String picture_path, int working_time_from,
                  int working_time_to, double price, String address, double longitude, double latitude, boolean is_pending) {
-        this.id = id;
         this.name = name;
         this.description = description;
-        this.string = string;
+        this.rating = rating;
         this.picture_path = picture_path;
         this.working_time_from = working_time_from;
         this.working_time_to = working_time_to;
@@ -68,5 +67,11 @@ public class Sight {
         this.is_pending = is_pending;
     }
 
+    public String getPicture_path() {
+        return picture_path;
+    }
 
+    public void setPicture_path(String picture_path) {
+        this.picture_path = picture_path;
+    }
 }
