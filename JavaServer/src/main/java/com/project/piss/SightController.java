@@ -3,7 +3,6 @@ package com.project.piss;
 
 import com.project.piss.models.Sight;
 import com.project.piss.services.SightService;
-import com.project.piss.services.SightServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +21,7 @@ import java.util.UUID;
 //add optional parameters in get
 //add service layer for better abstraction
 //add patch operation
+
 
 @RestController
 public class SightController {
@@ -47,6 +47,7 @@ public class SightController {
 
 
     //remove all arguments and add class on their place
+
     @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Sight create(@RequestParam("name") String name,
                         @RequestParam("description") String description,
@@ -65,8 +66,20 @@ public class SightController {
 
 
     @DeleteMapping("/v1/sights/{id}/delete")
-    public ResponseEntity<?> deleteSight(@PathVariable("id") Long id) {
-        return sightService.deleteSight(id);
+    public ResponseEntity<?> deleteSight(@PathVariable("id") long id) {
+//        return repository.findById(id)
+//                .map(sight -> {
+//                    delete(sight.getPicture_path(), id);
+//                    return ResponseEntity.ok().build();
+//                }).orElse(ResponseEntity.notFound().build());
+        return null;
+    }
+
+    private void delete(String imageName, long id) {
+
+        File file = new File(URL + imageName);
+        file.delete();
+//        repository.deleteById(id);
     }
 
 
