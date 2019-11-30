@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './style.css';
+import './styles.css';
 
 
-class LoginForm extends React.Component {
-    render() {
+const LoginForm = () =>  {
+  
       return (
         <div className="loginbox">
  <h1>Влизане</h1>
@@ -17,6 +17,6 @@ class LoginForm extends React.Component {
 </div>
 
       );
-    }
-  }
+    
+  };
 export default LoginForm;
