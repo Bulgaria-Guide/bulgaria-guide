@@ -1,0 +1,49 @@
+version: '3'
+volumes:
+  postgresdata2:
+
+services:
+  lb:
+    build:
+      context: ./load-balancer
+      dockerfile: Dockerfile
+    volumes:
+      - ./load-balancer:/app
+    container_name: "lb"
+    depends_on:
+      - "backend"
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    networks:
+      - local-dev
+
+  backend:
+    container_name: "backend"
+    build:
+      context: ./imetoNaDirektoriqtaNaTosheto
+      dockerfile: Dockerfile
+    expose:
+      - 8081
+    networks:
+      - local-dev
+
+  db:
+    image: postgres
+    restart: always
+    container_name: "bg-postgres"
+    environment:
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgresdata2:/data/postgres
+    expose:
+      - ${POSTGRES_SERVER_PORT}
+    ports:
+      - "${POSTGRES_SERVER_PORT}:${POSTGRES_SERVER_PORT}"
+    networks:
+      - local-dev
+
+networks:
+  local-dev:
