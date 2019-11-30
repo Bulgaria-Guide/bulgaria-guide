@@ -6,17 +6,20 @@ import SightDetails from './Components/Sights/Details';
 import Login from './Components/Login';
 import Administration from './Components/Administration';
 import { BrowserRouter, Route } from 'react-router-dom';
+import AccountProvider from './context/account';
 
 const App = () => (
-  <BrowserRouter>
-    <Navbar />
-    <Route exact path="/" component={Home} />
-    <Route path="/home" component={Home} />
-    <Route path="/sights" component={Search} />
-    <Route path="/details/:id" component={SightDetails} />
-    <Route path="/login" component={Login} />
-    <Route path="/admin" component={Administration} />
-  </BrowserRouter>
+  <AccountProvider>
+    <BrowserRouter>
+      <Navbar />
+      <Route exact path="/" component={Home} />
+      <Route path="/home" component={Home} />
+      <Route path="/sights" component={Search} />
+      <Route path="/details/:id" component={SightDetails} />
+      <Route path="/login" component={Login} />
+      <Route path="/admin" component={Administration} />
+    </BrowserRouter>
+  </AccountProvider>
 );
 
 export default App;

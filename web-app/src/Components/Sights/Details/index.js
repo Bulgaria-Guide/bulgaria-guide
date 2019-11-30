@@ -8,7 +8,8 @@ import constants from '../../../constants';
 const tempSight = constants.sights.details;
 
 const SightDetails = props => {
-  // const sight = APIClient.getSightDetails(props.match.params.id); //remove location.sight
+  // const sight = APIClient.getSightDetails(props.match.params.id);
+  // remove location.sight
   const sight = props.location.sight || tempSight;
 
   return (
