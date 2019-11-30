@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 interface SightRepository
         extends JpaRepository<Sight, Long> {
-
 }
