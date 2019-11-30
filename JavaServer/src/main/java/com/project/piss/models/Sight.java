@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Data
 @Table(name = "sight")
 
+
 public class Sight {
 
 
@@ -51,7 +52,6 @@ public class Sight {
 
     @Column(name = "category")
     private String category;
-
 
     public Sight() {
 

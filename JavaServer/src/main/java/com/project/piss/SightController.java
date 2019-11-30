@@ -11,17 +11,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
 
 
 //add optional parameters in get
 //add service layer for better abstraction
 //add patch operation
-
 
 @RestController
 public class SightController {
@@ -33,6 +28,7 @@ public class SightController {
     private SightService sightService;
 
 
+    //implement exception
     @GetMapping("/v1/sights/{id}/retrieve")
     public Sight findAll(@PathVariable("id") Long id) {
         return sightService.findById(id);
@@ -45,10 +41,8 @@ public class SightController {
         return sightService.findAll();
     }
 
-
-    //remove all arguments and add class on their place
-
     @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+
     public Sight create(@RequestParam("name") String name,
                         @RequestParam("description") String description,
                         @RequestParam("picture") MultipartFile picture,
@@ -62,6 +56,7 @@ public class SightController {
     ) throws IOException {
         return sightService.save(name, description, picture, workingTimeFrom, workingTimeTo, price, address,
                 longitude, latitude, category);
+
     }
 
 
@@ -73,6 +68,7 @@ public class SightController {
 //                    return ResponseEntity.ok().build();
 //                }).orElse(ResponseEntity.notFound().build());
         return null;
+
     }
 
     private void delete(String imageName, long id) {
