@@ -1,5 +1,5 @@
 import { AccountContext } from '../context/account';
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useCallback } from 'react';
 
 const RoleType = {
   'admin': 'admin',
@@ -8,7 +8,7 @@ const RoleType = {
 };
 
 export default function useRole() {
-  const { role } = useContext(AccountContext);
+  const { role, setRole } = useContext(AccountContext);
 
   const isAdmin = useMemo(
     () => role === RoleType.admin,
@@ -20,6 +20,14 @@ export default function useRole() {
     [role]
   );
 
-  return { isAdmin,
-    isLoggedIn };
+  const loginAs = useCallback(newRole => setRole(newRole), [setRole]);
+
+  const logout = useCallback(() => setRole('guest'), [setRole]);
+
+  return { 
+    isAdmin,
+    isLoggedIn,
+    loginAs,
+    logout,
+  };
 }
