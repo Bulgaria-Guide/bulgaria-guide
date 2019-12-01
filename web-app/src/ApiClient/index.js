@@ -1,61 +1,98 @@
 import request from './request';
 
-const get = url => request({
-  url,
-  'method': 'GET'
+// const baseUrl = "http://localhost:3010/v1" // For test Node Server
+// const baseUrl = "http://localhost:8080/v1" // For Java Server
+const baseUrl = "http://localhost:8081/v1" // For Load Balancer
+
+const token = "123asd5";
+
+const authHeader = jwtToken => !!jwtToken && {
+  'Authorization': `Bearer ${jwtToken}`,
+}
+
+const get = (url, jwtToken) => {
+  return request({
+    url: baseUrl + url,
+    'method': 'GET',
+    headers: authHeader(jwtToken)
+  })
+};
+
+const post = (url, data, jwtToken) => {
+  return request({
+    url: baseUrl + url,
+    'method': 'POST',
+    data,
+    headers: authHeader(jwtToken)
+  });
+}
+
+const del = (url, jwtToken) => request({
+  url: baseUrl + url,
+  'method': 'DELETE',
+  headers: authHeader(jwtToken)
 });
 
-const post = (url, data) => request({
-  url,
-  'method': 'POST',
-  data
-});
-
-const del = url => request({
-  url,
-  'method': 'DELETE'
-});
-
-const patch = (url, data) => request({
-  url,
+const patch = (url, data, jwtToken) => request({
+  url: baseUrl + url,
   'method': 'PATCH',
-  data
+  data,
+  headers: authHeader(jwtToken)
 });
 
 const register = data => post('/users/register', data);
 
 const login = data => post('/users/login', data);
 
-const createSight = data => post('/sights/create', data);
+const createSight = (data, token) => post('/sights/create', data, token);
 
-const deleteSight = sightId => del(`/sights/${sightId}/delete`);
+const deleteSight = (sightId, token) => del(`/sights/${sightId}/delete`, token);
 
 const getSightDetails = sightId => get(`/sights/${sightId}/retrieve`);
 
-// { sort, category, minRating, isWorking, state }
-const getSightsBy = () => {
-  const url = 'http://localhost:8080//v1/sights/retrieve';
-  // const url = `/sights/retrieve?sort=${sort}&\
-  //                               category=${category}&\
-  //                               min-rating=${minRating}&\
-  //                               isworking=${isWorking}&\
-  //                               state=${state}`;
-
+const getAllSights = () => {
+  const url = `/sights/retrieve`;
   return get(url);
 };
 
-const managePendingSight = (sightId, accepted) => patch(`/sights/${sightId}/manage`, { accepted });
 
-const rateSight = (sightId, rating) => post(`/sights/${sightId}/rate`, { rating });
+const getSightsBy = ({ sort, category, minRating, isWorking, state }) => {
+  const url = `/sights/retrieve?sort=${sort} &\
+                                category=${category}&\
+                                min-rating=${minRating}&\
+                                isworking=${isWorking}&\
+                                state=${state}`;
+  return get(url);
+};
+
+const approveSight = (sightId, token) => {
+  const url = `/sights/${sightId}/manage`;
+  const data = { accepted: true };
+  return patch(url, data, token);
+}
+const declineSight = (sightId, token) => {
+  const url = `/sights/${sightId}/manage`;
+  const data = { accepted: false };
+  return patch(url, data, token);
+}
+
+const rateSight = (sightId, rating, token) => {
+  const url = `/sights/${sightId}/rate`;
+  const data = { rating };
+  return patch(url, data, token);
+}
 
 const getSightComments = sightId => get(`sights/${sightId}/comments/retrieve`);
 
-const addSightComment = (sightId, content) => post(`/sights/${sightId}/comments/add`, { content });
+const addSightComment = (sightId, content, token) => {
+  const url = `/sights/${sightId}/comments/add`
+  return post(url, { content }, token);
+}
 
-const deleteSightComment = (sightId, commentId) => {
+const deleteSightComment = (sightId, commentId, token) => {
   const url = `/sights/${sightId}/comments/${commentId}/delete`;
 
-  return del(url);
+  return del(url, token);
 };
 
 const APIClient = {
@@ -64,8 +101,10 @@ const APIClient = {
   createSight,
   deleteSight,
   getSightDetails,
+  getAllSights,
   getSightsBy,
-  managePendingSight,
+  approveSight,
+  declineSight,
   rateSight,
   getSightComments,
   addSightComment,
