@@ -1,4 +1,4 @@
-package com.project.piss;
+package com.project.piss.repositories;
 
 import com.project.piss.models.Sight;
 import org.springframework.data.jpa.repository.JpaRepository;

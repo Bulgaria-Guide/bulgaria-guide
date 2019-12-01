@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
-    @Autowired private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    @Autowired private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
-    @Autowired private JwtUserDetailsService userDetailsService;
+    @Autowired
+    private JwtUserDetailsService userDetailsService;
 
     @RequestMapping(value = "/v1/users/register", method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {

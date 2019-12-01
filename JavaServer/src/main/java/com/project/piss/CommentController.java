@@ -2,6 +2,7 @@ package com.project.piss;
 
 
 import com.project.piss.models.Comment;
+import com.project.piss.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

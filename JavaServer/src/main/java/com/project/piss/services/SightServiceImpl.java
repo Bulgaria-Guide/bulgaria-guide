@@ -1,6 +1,6 @@
 package com.project.piss.services;
 
-import com.project.piss.SightRepository;
+import com.project.piss.repositories.SightRepository;
 import com.project.piss.models.Sight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
