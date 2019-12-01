@@ -12,6 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 
 //add optional parameters in get
@@ -30,7 +34,7 @@ public class SightController {
 
     //implement exception
     @GetMapping("/v1/sights/{id}/retrieve")
-    public Sight findAll(@PathVariable("id") Long id) {
+    public Sight findAById(@PathVariable("id") Long id) {
         return sightService.findById(id);
     }
 
@@ -41,8 +45,9 @@ public class SightController {
         return sightService.findAll();
     }
 
-    @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 
+    //remove all arguments and add class on their place
+    @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Sight create(@RequestParam("name") String name,
                         @RequestParam("description") String description,
                         @RequestParam("picture") MultipartFile picture,
@@ -61,21 +66,13 @@ public class SightController {
 
 
     @DeleteMapping("/v1/sights/{id}/delete")
-    public ResponseEntity<?> deleteSight(@PathVariable("id") long id) {
+    public ResponseEntity<?> deleteSight(@PathVariable("id") Long id) {
+        return sightService.deleteSight(id);
 //        return repository.findById(id)
 //                .map(sight -> {
 //                    delete(sight.getPicture_path(), id);
 //                    return ResponseEntity.ok().build();
 //                }).orElse(ResponseEntity.notFound().build());
-        return null;
-
-    }
-
-    private void delete(String imageName, long id) {
-
-        File file = new File(URL + imageName);
-        file.delete();
-//        repository.deleteById(id);
     }
 
 

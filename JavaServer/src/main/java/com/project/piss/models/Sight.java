@@ -55,7 +55,6 @@ public class Sight {
 
     }
 
-
     public Sight(String name, String description, double rating, String picture_path, int working_time_from,
                  int working_time_to, double price, String address, double longitude, double latitude, String category, boolean is_pending) {
         this.name = name;

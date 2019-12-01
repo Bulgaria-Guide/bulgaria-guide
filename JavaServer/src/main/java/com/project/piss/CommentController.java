@@ -25,12 +25,14 @@ public class CommentController {
                           @RequestParam("sightId") Long sightId,
                           @RequestParam("authorId") Long authorId) {
         Comment comment = new Comment(content, sightId, authorId);
+        repository.save(comment);
         return comment;
     }
 
     //implement response code
     @DeleteMapping("/v1/comments/{id}/delete")
     public void deleteSight(@PathVariable("id") long id) {
+
         repository.deleteById(id);
     }
 
