@@ -16,8 +16,7 @@ public class CommentController {
 
     @GetMapping("/v1/comments/{sight_id}/retrieve")
     public List<Comment> findSightComments(@PathVariable("sight_id") Long id) {
-//        return repository.findAllCommentsForSight(id);
-        return null;
+        return repository.findAllCommentsForSight(id);
     }
 
     @PostMapping(value = "/v1/comments/create")

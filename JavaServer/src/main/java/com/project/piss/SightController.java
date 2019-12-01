@@ -9,13 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
 
 
 //add optional parameters in get
@@ -68,11 +63,6 @@ public class SightController {
     @DeleteMapping("/v1/sights/{id}/delete")
     public ResponseEntity<?> deleteSight(@PathVariable("id") Long id) {
         return sightService.deleteSight(id);
-//        return repository.findById(id)
-//                .map(sight -> {
-//                    delete(sight.getPicture_path(), id);
-//                    return ResponseEntity.ok().build();
-//                }).orElse(ResponseEntity.notFound().build());
     }
 
 
