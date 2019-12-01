@@ -30,7 +30,7 @@ public class SightController {
 
 
     @Autowired
-    private SightServiceImpl sightService;
+    private SightService sightService;
 
 
     @GetMapping("/v1/sights/{id}/retrieve")
