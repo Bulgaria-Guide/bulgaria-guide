@@ -16,7 +16,8 @@ public class CommentController {
 
     @GetMapping("/v1/comments/{sight_id}/retrieve")
     public List<Comment> findSightComments(@PathVariable("sight_id") Long id) {
-        return repository.findAllCommentsForSight(id);
+//        return repository.findAllCommentsForSight(id);
+        return null;
     }
 
     @PostMapping(value = "/v1/comments/create")
@@ -28,7 +29,7 @@ public class CommentController {
     }
 
     //implement response code
-    @DeleteMapping("/v1/sights/{id}/delete")
+    @DeleteMapping("/v1/comments/{id}/delete")
     public void deleteSight(@PathVariable("id") long id) {
         repository.deleteById(id);
     }
