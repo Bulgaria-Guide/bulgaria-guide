@@ -3,18 +3,22 @@ import SightCard from './Card';
 import View from '../../UI/View';
 import constants from '../../../constants';
 import PendingSightCard from './Pending';
+import APIClient from '../../../ApiClient';
 
-const sights = constants.sights.list;
+// const sights = constants.sights.list;
 
-const SightsList = ({ pending = false }) => {
+async function SightsList({ pending = false }) {
+  const sights = await APIClient.getSightsBy();
+
+  console.log(sights);
   const renderSight = sight => (pending
-    ? <PendingSightCard sight={sight} key={sight.id}/>
-    : <SightCard sight={sight} key={sight.id}/>);
+    ? <PendingSightCard sight={sight} key={sight.id} />
+    : <SightCard sight={sight} key={sight.id} />);
 
-  const sightsList = sights.map(renderSight);
+  // const sightsList = sights.map(renderSight);
 
   return <View>
-    {sightsList}
+    {/* {sightsList} */}
   </View>;
 };
 

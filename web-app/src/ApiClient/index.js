@@ -32,8 +32,14 @@ const deleteSight = sightId => del(`/sights/${sightId}/delete`);
 
 const getSightDetails = sightId => get(`/sights/${sightId}/retrieve`);
 
-const getSightsBy = ({ sort, category, minRating, isWorking, state }) => {
-  const url = `/sights/retrieve?sort=${sort}&category=${category}&min-rating=${minRating}&isworking=${isWorking}&state=${state}`;
+// { sort, category, minRating, isWorking, state }
+const getSightsBy = () => {
+  const url = 'http://localhost:8080//v1/sights/retrieve';
+  // const url = `/sights/retrieve?sort=${sort}&\
+  //                               category=${category}&\
+  //                               min-rating=${minRating}&\
+  //                               isworking=${isWorking}&\
+  //                               state=${state}`;
 
   return get(url);
 };
@@ -46,7 +52,11 @@ const getSightComments = sightId => get(`sights/${sightId}/comments/retrieve`);
 
 const addSightComment = (sightId, content) => post(`/sights/${sightId}/comments/add`, { content });
 
-const deleteSightComment = (sightId, commentId) => delete (`/sights/${sightId}/comments/${commentId}/delete`);
+const deleteSightComment = (sightId, commentId) => {
+  const url = `/sights/${sightId}/comments/${commentId}/delete`;
+
+  return del(url);
+};
 
 const APIClient = {
   login,
@@ -62,6 +72,7 @@ const APIClient = {
   deleteSightComment
 };
 
-// Might do something like Account/Sights/Comments Managers with just CRUD options like CommentsManager.add(content);
+// Might do something like Account/Sights/Comments Managers
+// with just CRUD options like CommentsManager.add(content);
 
 export default APIClient;

@@ -124,7 +124,8 @@
     "max-len": [
       "error",
       {
-        "code": 100
+        "code": 100,
+        "ignoreUrls": true
       }
     ],
     "max-lines": "error",
@@ -151,14 +152,14 @@
     "no-caller": "error",
     "no-catch-shadow": "error",
     "no-confusing-arrow": "error",
-    "no-console": [
-      "error",
-      {
-        "allow": [
-          "warn"
-        ]
-      }
-    ],
+    // "no-console": [
+    //   "error",
+    //   {
+    //     "allow": [
+    //       "warn"
+    //     ]
+    //   }
+    // ],
     "no-constructor-return": "error",
     "no-continue": "error",
     "no-div-regex": "error",
