@@ -32,12 +32,14 @@ const deleteSight = sightId => del(`/sights/${sightId}/delete`);
 
 const getSightDetails = sightId => get(`/sights/${sightId}/retrieve`);
 
-const getSightsBy = ({ sort, category, minRating, isWorking, state }) => {
-  const url = `/sights/retrieve?sort=${sort}&\
-                                category=${category}&\
-                                min-rating=${minRating}&\
-                                isworking=${isWorking}&\
-                                state=${state}`;
+// { sort, category, minRating, isWorking, state }
+const getSightsBy = () => {
+  const url = 'http://localhost:8080//v1/sights/retrieve';
+  // const url = `/sights/retrieve?sort=${sort}&\
+  //                               category=${category}&\
+  //                               min-rating=${minRating}&\
+  //                               isworking=${isWorking}&\
+  //                               state=${state}`;
 
   return get(url);
 };

@@ -17,6 +17,7 @@ import java.util.List;
 //add service layer for better abstraction
 //add patch operation
 
+@CrossOrigin
 @RestController
 public class SightController {
 
@@ -28,6 +29,7 @@ public class SightController {
 
 
     //implement exception
+    @CrossOrigin
     @GetMapping("/v1/sights/{id}/retrieve")
     public Sight findAById(@PathVariable("id") Long id) {
         return sightService.findById(id);

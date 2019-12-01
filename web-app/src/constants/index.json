@@ -1,6 +1,6 @@
 {
   "api": {
-    "baseUrl": "localhost:8080/v1"
+    "baseUrl": "localhost:8080//v1"
   },
   "sights": {
     "details": {
