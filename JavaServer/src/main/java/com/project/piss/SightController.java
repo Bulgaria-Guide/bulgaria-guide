@@ -3,20 +3,14 @@ package com.project.piss;
 
 import com.project.piss.models.Sight;
 import com.project.piss.services.SightService;
-import com.project.piss.services.SightServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
 
 
 //add optional parameters in get
@@ -33,8 +27,9 @@ public class SightController {
     private SightService sightService;
 
 
+    //implement exception
     @GetMapping("/v1/sights/{id}/retrieve")
-    public Sight findAll(@PathVariable("id") Long id) {
+    public Sight findAById(@PathVariable("id") Long id) {
         return sightService.findById(id);
     }
 
@@ -61,6 +56,7 @@ public class SightController {
     ) throws IOException {
         return sightService.save(name, description, picture, workingTimeFrom, workingTimeTo, price, address,
                 longitude, latitude, category);
+
     }
 
 
