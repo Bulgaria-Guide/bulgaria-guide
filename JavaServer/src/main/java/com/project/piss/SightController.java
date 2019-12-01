@@ -33,7 +33,7 @@ public class SightController {
 
     //implement exception
     @GetMapping("/v1/sights/{id}/retrieve")
-    public Sight findAll(@PathVariable("id") Long id) {
+    public Sight findById(@PathVariable("id") Long id) {
         return repository.findById(id)
                 .orElseThrow(RuntimeException::new);
     }
