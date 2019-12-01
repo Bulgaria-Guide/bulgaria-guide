@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const FloatingButton = ({ label, style, color = 'red' }) => (
-  <a className={`btn-floating halfway-fab waves-effect waves-light ${color}`} style={style}>
+const FloatingButton = ({ label, style, color = 'red', to, onClick }) => (
+  <Link to={to} className={`btn-floating halfway-fab waves-effect waves-light ${color}`} style={style} onClick={onClick}>
     <i className="material-icons">{label}</i>
-  </a>
+  </Link>
 );
 
 export default FloatingButton;

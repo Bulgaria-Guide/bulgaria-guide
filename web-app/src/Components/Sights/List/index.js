@@ -8,8 +8,8 @@ const sights = constants.sights.list;
 
 const SightsList = ({ pending = false }) => {
   const renderSight = sight => (pending
-    ? <PendingSightCard sight={sight} key={sight.id}/>
-    : <SightCard sight={sight} key={sight.id}/>);
+    ? <PendingSightCard sight={sight} key={sight.id} />
+    : <SightCard sight={sight} key={sight.id} />);
 
   const sightsList = sights.map(renderSight);
 
