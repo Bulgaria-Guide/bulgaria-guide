@@ -18,16 +18,16 @@ public class Comment {
     private String content;
 
     @Column(name = "sight_id")
-    private int sightId;
+    private Long sightId;
 
     @Column(name = "author_id")
-    private int authorId;
+    private Long authorId;
 
     public Comment() {
 
     }
 
-    public Comment(String content, int sightId, int authorId) {
+    public Comment(String content, Long sightId, Long authorId) {
         this.content = content;
         this.sightId = sightId;
         this.authorId = authorId;
