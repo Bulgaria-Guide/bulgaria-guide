@@ -14,7 +14,7 @@ const CommentCard = props => {
     <div className="col s12 m7">
       <div className="card horizontal">
         <div className="card-stacked">
-          <FloatingButton to='/home' onClick={deleteComment} label='X' style={{ top: 0, right: 0 }} />
+          {isAdmin && <FloatingButton to='/home' onClick={deleteComment} label='X' style={{ top: 0, right: 0 }} />}
           <div className="card-action grey lighten-1" style={{
             'paddingTop': 0,
             'paddingBottom': 0
