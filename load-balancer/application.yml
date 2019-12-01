@@ -5,7 +5,7 @@ log:
   format: text
 cluster:
   nodes:
-    - address: "http://localhost:8081"
-    - address: "http://localhost:8082"
-    - address: "http://localhost:8083"
+    - address: "http://localhost:8080"
+    - address: "http://localhost:8080"
+    - address: "http://localhost:8080"
   policy: "rr"
