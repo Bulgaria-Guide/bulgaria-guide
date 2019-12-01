@@ -25,6 +25,7 @@ public class CommentController {
                           @RequestParam("sightId") Long sightId,
                           @RequestParam("authorId") Long authorId) {
         Comment comment = new Comment(content, sightId, authorId);
+        repository.save(comment);
         return comment;
     }
 
