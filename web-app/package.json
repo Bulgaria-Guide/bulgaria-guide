@@ -39,11 +39,6 @@
     "prettier": "^1.19.1",
     "react-router-dom": "^5.1.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  },
   "lint-staged": {
     "*.+(js|jsx)": [
       "eslint --fix",
