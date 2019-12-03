@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 
 const categoryDropdown = (
-  <select defaultValue="" className="browser-default">
+  <select defaultValue="" className="browser-default" name="category">
     <option value="" disabled>Изберете категория:</option>
     <option value="all">Всички</option>
     <option value="historical">Исторически</option>
@@ -13,7 +13,7 @@ const categoryDropdown = (
 );
 
 const ratingDropdown = (
-  <select defaultValue="" className="browser-default">
+  <select defaultValue="" className="browser-default" name="minRating">
     <option value="" disabled>Филитрирайте по рейтинг:</option>
     <option value="1">С по-висока оценка от 1</option>
     <option value="2">С по-висока оценка от 2</option>
@@ -28,7 +28,7 @@ const ratingDropdown = (
 );
 
 const sortDropdown = (
-  <select defaultValue="" className="browser-default">
+  <select defaultValue="" className="browser-default" name="sortMethod">
     <option value="" disabled>Изберете начин на сортиране:</option>
     <option value="rating">По рейтинг</option>
     <option value="alphabetical" selected>По азбучен ред</option>
@@ -47,7 +47,7 @@ const openedOly = (
 
 const SearchBar = () => (
   <div className="search-bar">
-    <form action="#">
+    <form action="#" onSubmit={data => console.log(data)}>
       <div className="row">
         <div className="col s12">
           <h4>Намери туристически обекти</h4>
@@ -57,7 +57,7 @@ const SearchBar = () => (
         <div className="input-field col s4">{sortDropdown}</div>
         <div className="input-field col s3">{openedOly}</div>
         <div className="input-field col s9">
-          <a className="waves-effect waves-light btn-large" style={{ 'zIndex': 0 }} id="button">
+          <a className="waves-effect waves-light btn-large" style={{ 'zIndex': 0 }} id="button" type="submit">
             ТЪРСИ
           </a>
         </div>

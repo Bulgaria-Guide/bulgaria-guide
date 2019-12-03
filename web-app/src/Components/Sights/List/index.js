@@ -1,26 +1,27 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import SightCard from './Card';
 import View from '../../UI/View';
 import PendingSightCard from './Pending';
-import APIClient from '../../../ApiClient';
+import constants from 'resources/constants';
+// import APIClient from '../../../ApiClient';
 
-// const sights = constants.sights.list;
+const sights = constants.sights.list;
 
 function SightsList({ pending = false }) {
 
-  const [sights, setSights] = useState([]);
+  // const [sights, setSights] = useState([]);
 
-  useEffect(() => {
-    APIClient.getAllSights().then(data => {
-      console.log(data);
-      setSights(data);
-    })
-      .catch(err => {
-        console.log(err);
+  // useEffect(() => {
+  //   APIClient.getAllSights().then(data => {
+  //     console.log(data);
+  //     setSights(data);
+  //   })
+  //     .catch(err => {
+  //       console.log(err);
 
-        return null;
-      });
-  }, [setSights]);
+  //       return null;
+  //     });
+  // }, [setSights]);
 
   const renderSight = useCallback(sight => (pending
     ? <PendingSightCard sight={sight} key={sight.id} />
