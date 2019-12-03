@@ -16,7 +16,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     "accessor-pairs": "error",
@@ -82,9 +83,6 @@
     "func-call-spacing": "error",
     "func-name-matching": "error",
     "func-names": "error",
-    "func-style": [
-      "error"
-    ],
     "function-paren-newline": "off",
     "generator-star-spacing": "error",
     "global-require": "error",
@@ -115,7 +113,6 @@
         "before": true
       }
     ],
-    "line-comment-position": "error",
     "lines-around-comment": "error",
     "lines-around-directive": "error",
     "lines-between-class-members": "error",
@@ -138,7 +135,10 @@
       "error",
       "separate-lines"
     ],
-    "multiline-ternary": "error",
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
     "new-cap": "error",
     "new-parens": "error",
     "newline-after-var": "off",
@@ -178,7 +178,6 @@
     "no-implicit-globals": "error",
     "no-implied-eval": "error",
     "no-import-assign": "error",
-    "no-inline-comments": "error",
     "no-invalid-this": "error",
     "no-iterator": "error",
     "no-label-var": "error",
@@ -279,6 +278,8 @@
       "single"
     ],
     "radix": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "require-await": "error",
     "require-jsdoc": "off",
     "require-unicode-regexp": "off",

@@ -8,13 +8,23 @@ const CommentCard = props => {
 
   const deleteComment = () => {
     // APIClient.deleteComment(props.comment.id);
-  }
+  };
 
   return (
     <div className="col s12 m7">
       <div className="card horizontal">
         <div className="card-stacked">
-          {isAdmin && <FloatingButton to='/home' onClick={deleteComment} label='X' style={{ top: 0, right: 0 }} />}
+          {isAdmin &&
+            <FloatingButton
+              to="/home"
+              onClick={deleteComment}
+              label="X"
+              style={{
+                'top': 0,
+                'right': 0
+              }}
+            />
+          }
           <div className="card-action grey lighten-1" style={{
             'paddingTop': 0,
             'paddingBottom': 0
@@ -28,5 +38,5 @@ const CommentCard = props => {
       </div>
     </div >
   );
-}
+};
 export default CommentCard;
