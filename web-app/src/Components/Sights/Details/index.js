@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentsList from './Comments/List';
+import Comments from './Comments';
 import ContainerLayout from '../../UI/ContainerLayout';
 import SightInfo from './Info';
 // import APIClient from '../../../ApiClient';
@@ -15,7 +15,7 @@ const SightDetails = props => {
   return (
     <ContainerLayout header={sight.name}>
       <SightInfo sight={sight} />
-      <CommentsList />
+      <Comments sight={sight.id} />
     </ContainerLayout>
   );
 };
