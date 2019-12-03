@@ -34,7 +34,7 @@ function SightsList({ pending = false }) {
 
       return sights.map(renderSight);
     },
-    [renderSight, sights]);
+    [renderSight]);
 
   return (
     <View>

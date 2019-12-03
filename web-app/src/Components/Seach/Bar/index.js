@@ -57,7 +57,11 @@ const SearchBar = () => (
         <div className="input-field col s4">{sortDropdown}</div>
         <div className="input-field col s3">{openedOly}</div>
         <div className="input-field col s9">
-          <a className="waves-effect waves-light btn-large" style={{ 'zIndex': 0 }} id="button" type="submit">
+          <a
+            className="waves-effect waves-light btn-large"
+            style={{ 'zIndex': 0 }}
+            id="button"
+            type="submit">
             ТЪРСИ
           </a>
         </div>
