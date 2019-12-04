@@ -52,13 +52,16 @@ const getAllSights = () => {
   return get(url);
 };
 
-const getSightsBy = ({ sortMethod, category, minRating, isWorking, state }) => {
-  const url = `/sights/retrieve?sort=${sortMethod} &\
-                                category=${category}&\
-                                min-rating=${minRating}&\
-                                isworking=${isWorking}&\
-                                state=${state}`;
+const getPendingSights = () => get('/sights/retrieve?state=pending');
 
+const getSightsBy = ({ sortMethod, category, minRating, isWorking, state }) => {
+  const sort = sortMethod ? `sort=${sortMethod}&` : '';
+  const cat = category ? `category=${category}&` : '';
+  const minR = minRating ? `min-rating=${minRating}&` : '';
+  const working = `isworking=${isWorking}&`;
+  const pending = state ? 'state=pending' : '';
+
+  const url = `/sights/retrieve?${sort}${cat}${minR}${working}${pending}`;
   return get(url);
 };
 
@@ -102,6 +105,7 @@ const APIClient = {
   createSight,
   deleteSight, // DONE
   getSightDetails,
+  getPendingSights, // DONE -- add Token
   getAllSights, // DONE -- to be deleted in a bit
   getSightsBy, // DONE
   approveSight, // DONE
