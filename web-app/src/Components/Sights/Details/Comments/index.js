@@ -22,7 +22,7 @@ const Comments = ({ sightId }) => {
         onClick={() => setShowCommentForm(!showCommentForm)}
       />
       }
-      {showCommentForm && <NewCommentField />}
+      {showCommentForm && <NewCommentField sightId={sightId} />}
       <CommentsList sightId={sightId} />
     </View>
   );
