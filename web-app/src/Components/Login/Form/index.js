@@ -4,8 +4,8 @@ import useField from 'hooks/useField';
 import APIClient from 'ApiClient';
 
 const LoginForm = () => {
-  const usernameField = useField();
-  const passwordField = useField();
+  const usernameField = useField('');
+  const passwordField = useField('');
 
   const handleSubmit = useCallback(event => {
     const data = {
