@@ -6,8 +6,21 @@ import constants from 'resources/constants';
 
 const { comments } = constants;
 
-const CommentsList = () => {
-  // const comments = APIClient.getSightComments(sightId);
+// eslint-disable-next-line no-unused-vars
+const CommentsList = ({ sightId }) => {
+  // const [comments, setComment] = useState([]);
+
+  // useEffect(() => {
+  //   APIClient.getSightComments(sightId)
+  //     .then(data => {
+  //       console.log(data);
+  //       setComment(data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //       return null;
+  //     });
+  // }, [setSights]);
 
   const commentsList = comments.map(
     comment => <CommentCard comment={comment} key={comment.id} />

@@ -97,19 +97,19 @@ const deleteSightComment = (sightId, commentId, token) => {
 };
 
 const APIClient = {
-  login,
-  register,
+  login, // DONE
+  register, // DONE
   createSight,
-  deleteSight,
+  deleteSight, // DONE
   getSightDetails,
-  getAllSights,
-  getSightsBy,
-  approveSight,
-  declineSight,
+  getAllSights, // DONE -- to be deleted in a bit
+  getSightsBy, // DONE
+  approveSight, // DONE
+  declineSight, // DONE
   rateSight,
-  getSightComments,
-  addSightComment,
-  deleteSightComment
+  getSightComments, // DONE
+  addSightComment, // DONE
+  deleteSightComment // DONE
 };
 
 // Might do something like Account/Sights/Comments Managers

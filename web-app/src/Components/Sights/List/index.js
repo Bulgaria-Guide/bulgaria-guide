@@ -3,7 +3,7 @@ import SightCard from './Card';
 import View from '../../UI/View';
 import PendingSightCard from './Pending';
 import constants from 'resources/constants';
-// import APIClient from '../../../ApiClient';
+// import APIClient from 'ApiClient';
 
 const sights = constants.sights.list;
 
@@ -29,11 +29,7 @@ function SightsList({ pending = false }) {
   ), [pending]);
 
   const sightsList = useMemo(
-    () => {
-      console.log('MEEMO');
-
-      return sights.map(renderSight);
-    },
+    () => sights.map(renderSight),
     [renderSight]);
 
   return (
