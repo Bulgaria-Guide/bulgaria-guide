@@ -3,7 +3,7 @@ import Comments from './Comments';
 import ContainerLayout from '../../UI/ContainerLayout';
 import SightInfo from './Info';
 // import APIClient from '../../../ApiClient';
-import constants from '../../../constants';
+import constants from 'resources/constants';
 
 const tempSight = constants.sights.details;
 

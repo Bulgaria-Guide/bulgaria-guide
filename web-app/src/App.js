@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Search from './Components/Seach';
 import SightDetails from './Components/Sights/Details';
 import Login from './Components/Login';
+import Register from './Components/Register';
 import Administration from './Components/Administration';
 import { BrowserRouter, Route } from 'react-router-dom';
 import AccountProvider from './context/account';
@@ -17,6 +18,7 @@ const App = () => (
       <Route path="/sights" component={Search} />
       <Route path="/details/:id" component={SightDetails} />
       <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="/admin" component={Administration} />
     </BrowserRouter>
   </AccountProvider>
