@@ -24,6 +24,11 @@ const Navbar = () => {
               <NavLink to="/login">Вход</NavLink>
             </li>
           }
+          {!isLoggedIn &&
+            <li>
+              <NavLink to="/register">Регистрация</NavLink>
+            </li>
+          }
           {isAdmin &&
             <li>
               <NavLink to="/admin">Администрация</NavLink>
