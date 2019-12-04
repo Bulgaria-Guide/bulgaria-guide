@@ -52,8 +52,8 @@ const getAllSights = () => {
   return get(url);
 };
 
-const getSightsBy = ({ sort, category, minRating, isWorking, state }) => {
-  const url = `/sights/retrieve?sort=${sort} &\
+const getSightsBy = ({ sortMethod, category, minRating, isWorking, state }) => {
+  const url = `/sights/retrieve?sort=${sortMethod} &\
                                 category=${category}&\
                                 min-rating=${minRating}&\
                                 isworking=${isWorking}&\
