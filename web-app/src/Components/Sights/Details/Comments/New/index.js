@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import APIClient from 'ApiClient';
-import useTextField from 'hooks/fields/useTextField';
+import useField from 'hooks/useField';
 
 const NewCommentField = sightId => {
 
-  const { content, handleChange } = useTextField();
+  const { content, handleChange } = useField();
   const handleSubmit = useCallback(event => {
     console.log(content);
     APIClient.addSightComment(sightId, content);

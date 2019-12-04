@@ -1,12 +1,12 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import './styles.css';
-import useTextField from 'hooks/fields/useTextField';
+import useField from 'hooks/useField';
 import APIClient from 'ApiClient';
 
 const SearchBar = () => {
-  const categoryField = useTextField('');
-  const ratingField = useTextField('');
-  const sortMethodField = useTextField('');
+  const categoryField = useField('');
+  const ratingField = useField('');
+  const sortMethodField = useField('');
   const [openedOnlyField, setOpenedOnlyField] = useState(false);
 
   const categoryDropdown = useMemo(() => (

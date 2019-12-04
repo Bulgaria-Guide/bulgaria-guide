@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import './styles.css';
-import useTextField from 'hooks/fields/useTextField';
+import useField from 'hooks/useField';
 import APIClient from 'ApiClient';
 
 const LoginForm = () => {
-  const usernameField = useTextField();
-  const passwordField = useTextField();
+  const usernameField = useField();
+  const passwordField = useField();
 
   const handleSubmit = useCallback(event => {
     const data = {

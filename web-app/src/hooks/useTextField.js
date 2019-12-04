@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
-const useTextField = () => {
-  const [content, setContent] = useState('');
+const useField = initialValue => {
+  const [content, setContent] = useState(initialValue);
 
   const handleChange = useCallback(
     event => setContent(event.target.value),
@@ -13,4 +13,4 @@ const useTextField = () => {
   };
 };
 
-export default useTextField;
+export default useField;
