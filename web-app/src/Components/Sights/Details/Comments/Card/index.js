@@ -2,12 +2,14 @@ import React from 'react';
 import Text from 'Components/UI/Text';
 import useRole from 'hooks/useRole';
 import FloatingButton from 'Components/UI/Button/Floating';
+import APIClient from 'ApiClient';
 
 const CommentCard = props => {
   const { isAdmin } = useRole();
 
-  const deleteComment = () => {
-    // APIClient.deleteComment(props.comment.id);
+  const deleteComment = event => {
+    APIClient.deleteComment(props.comment.id);
+    event.preventDefault();
   };
 
   return (
@@ -16,7 +18,7 @@ const CommentCard = props => {
         <div className="card-stacked">
           {isAdmin &&
             <FloatingButton
-              to="/home"
+              to="#"
               onClick={deleteComment}
               label="X"
               style={{

@@ -1,9 +1,8 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import './styles.css';
 import useField from 'hooks/useField';
-import APIClient from 'ApiClient';
 
-const SearchBar = () => {
+const SearchBar = ({ onSubmit }) => {
   const categoryField = useField('');
   const ratingField = useField('');
   const sortMethodField = useField('');
@@ -76,11 +75,11 @@ const SearchBar = () => {
       'sortMethod': sortMethodField.content,
       'isWorking': openedOnlyField
     };
-    console.log(data);
-    APIClient.getSightsBy(data);
+    onSubmit(data);
     event.preventDefault();
   }, [
     categoryField.content,
+    onSubmit,
     openedOnlyField,
     ratingField.content,
     sortMethodField.content

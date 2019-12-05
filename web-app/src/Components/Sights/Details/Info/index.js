@@ -2,12 +2,13 @@ import React from 'react';
 import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
 import useRole from 'hooks/useRole';
+import APIClient from 'ApiClient';
 
-const SightInfo = props => {
+const SightInfo = ({ sight }) => {
   const { isAdmin } = useRole();
 
   const deleteSight = () => {
-    // APIClient.deleteSight(props.sight.id);
+    APIClient.deleteSight(sight.id);
   };
 
   return (
@@ -21,17 +22,17 @@ const SightInfo = props => {
             }} label="X" onClick={deleteSight} />}
             <div className="card-image">
               <img src="https://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzLzc2ODY3MjhjZjE3ZGI5NGI1NF83NDA5Mjk1NTA4X2UxNGMwYTU1Yzlfay5qcGciXSxbInAiLCJ0aHVtYiIsIjEyMDB4PiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA4MSAtYXV0by1vcmllbnQiXV0" />
-              <span className="card-title">{props.sight.name}`}</span>
+              <span className="card-title">{sight.name}`}</span>
             </div>
-            <Text>{`Местоположение: ${props.sight.address}`}</Text>
+            <Text>{`Местоположение: ${sight.address}`}</Text>
             <Text>
-              {`Работно време: от ${props.sight.workingTimeFrom} до ${props.sight.workingTimeTo}`}
+              {`Работно време: от ${sight.workingTimeFrom} до ${sight.workingTimeTo}`}
             </Text>
-            <Text>{`Цена: ${props.sight.price} лв.`}</Text>
+            <Text>{`Цена: ${sight.price} лв.`}</Text>
             <Text>
-              {`Времето в момента: ${props.sight.weather.outlook}, ${props.sight.weather.temp}C.`}
+              {`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C.`}
             </Text>
-            <Text>{props.sight.description}</Text>
+            <Text>{sight.description}</Text>
           </div>
         </div>
       </div>
