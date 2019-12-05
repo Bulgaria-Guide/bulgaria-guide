@@ -7,6 +7,7 @@
   - [Users](#users)
     - [Register User](#register-user)
     - [Login](#login)
+    - [Role](#role)
   - [Sights](#sights)
     - [Create](#create-sight)
     - [Delete](#delete-sight)
@@ -85,6 +86,30 @@ Bulgaria Guide is ...
 | 200 OK           | Will be returned if the user is successfully login.     |
 | 401 Unauthorized | Will be returned if the user credentials are not valid. |
 
+### Role
+
+#### Request
+
+#### Route
+
+`GET /v1/users/role?username=aa`
+
+#### Response
+
+#### Body
+
+```json
+{
+  "role": "admin"
+}
+```
+
+| Status Code      | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| 200 OK           | Will be returned if the operation was successful.     |
+| 400 BadRequest   | Will be returned if the request is not valid. |
+
+
 ## Sights
 
 ### Create Sight
@@ -105,7 +130,7 @@ Bulgaria Guide is ...
 {
   "name": "test-name",
   "description": "test-description",
-  "picturePath": "/tmp/pic1",
+  "picture": "base64 encoded picture",
   "workingTimeFrom": "8",
   "workingTimeTo": "17",
   "price": "12",
