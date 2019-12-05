@@ -11,6 +11,7 @@
     - [Create](#create-sight)
     - [Delete](#delete-sight)
     - [Retrieve](#retrieve-sight)
+    - [Retrieve pending](#retrieve-pending)
     - [Retrieve all](#retrieve-sights)
     - [Manage](#manage-sight)
     - [Rate](#rate-sight)
@@ -76,7 +77,8 @@ Bulgaria Guide is ...
 
 ```json
 {
-  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf"
+  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf",
+  "role": "admin"
 }
 ```
 
@@ -95,7 +97,7 @@ Bulgaria Guide is ...
 
 `POST /v1/sights/create`
 
-### Authorization
+#### Authorization
 
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
@@ -155,10 +157,6 @@ None
 
 `GET /v1/sights/:id/retrieve`
 
-### Authorization
-
-`Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
-
 #### Body
 
 None
@@ -202,10 +200,6 @@ None
 _method1 = alphabetical | rating_
 
 _category1 = all | culture | historical | rest | sports_
-
-### Authorization
-
-`Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
 
@@ -279,6 +273,76 @@ None
 | 200 OK          | Will be returned if the operation was successful.                       |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
+### Retrieve Pending
+
+#### Request
+
+#### Route
+
+`GET /v1/sights/retrieve/pending`
+
+#### Authorization - Admin only
+
+`Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
+
+#### Body
+
+None
+
+#### Response
+
+#### Body
+
+```json
+[
+  {
+    "id": "123",
+    "name": "test-name",
+    "description": "test-description",
+    "picturePath": "/tmp/pic1",
+    "workingTimeFrom": "8",
+    "workingTimeTo": "17",
+    "price": "12",
+    "address": "test-address",
+    "log": "69",
+    "lat": "42",
+    "category": "rest"
+  },
+  {
+    "id": "123",
+    "name": "test-name",
+    "description": "test-description",
+    "picturePath": "/tmp/pic1",
+    "workingTimeFrom": "8",
+    "workingTimeTo": "17",
+    "price": "12",
+    "address": "test-address",
+    "log": "69",
+    "lat": "42",
+    "category": "rest"
+  },
+  {
+    "id": "123",
+    "name": "test-name",
+    "description": "test-description",
+    "picturePath": "/tmp/pic1",
+    "workingTimeFrom": "8",
+    "workingTimeTo": "17",
+    "price": "12",
+    "address": "test-address",
+    "log": "69",
+    "lat": "42",
+    "category": "rest"
+  }
+]
+```
+
+| Status Code     | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| 200 OK          | Will be returned if the operation was successful.                       |
+| 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
+
+
 ### Manage Sight
 
 #### Request
@@ -287,7 +351,7 @@ None
 
 `PATCH /v1/sights/:id/manage`
 
-### Authorization - Admin only
+#### Authorization - Admin only
 
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
@@ -303,7 +367,7 @@ None
 
 | Status Code     | Description                                                             |
 | --------------- | ----------------------------------------------------------------------- |
-| 200 OK          | Will be returned if the sight is successfully added.                    |
+| 200 OK          | Will be returned if the sight status is successfully changed.                    |
 | 400 Bad Request | Will be returned if the request is malformed or missing mandatory data. |
 
 ### Rate Sight
@@ -314,7 +378,7 @@ None
 
 `POST /v1/sights/:id/rate`
 
-### Authorization - Admin only
+#### Authorization
 
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
@@ -348,10 +412,6 @@ None
 #### Route
 
 `GET /v1/sights/:id/comments/retrieve`
-
-### Authorization - _Admin/Author only_
-
-`Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Body
 
@@ -397,7 +457,7 @@ None
 
 `POST /v1/sights/:id/comments/add`
 
-### Authorization
+#### Authorization
 
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
@@ -424,7 +484,7 @@ None
 
 `DELETE /v1/sights/:id/comments/:id/delete`
 
-### Authorization - _Admin/Author only_
+#### Authorization - _Admin/Author only_
 
 `Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
