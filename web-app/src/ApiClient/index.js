@@ -116,9 +116,9 @@ const deleteSightComment = (sightId, commentId, token) => {
 };
 
 const APIClient = {
-  login, // DONE
-  register, // DONE
-  getRole,
+  login, // DONE v2
+  register, // DONE v2
+  getRole, // DONE v2
   createSight,
   deleteSight, // DONE
   getSightDetails,
