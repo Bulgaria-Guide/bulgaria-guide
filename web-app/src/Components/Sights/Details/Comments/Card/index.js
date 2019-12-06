@@ -1,11 +1,11 @@
 import React from 'react';
 import Text from 'Components/UI/Text';
-import useRole from 'hooks/useRole';
+import useAccount from 'hooks/useAccount';
 import FloatingButton from 'Components/UI/Button/Floating';
 import APIClient from 'ApiClient';
 
 const CommentCard = props => {
-  const { isAdmin } = useRole();
+  const { isAdmin } = useAccount();
 
   const deleteComment = event => {
     APIClient.deleteComment(props.comment.id);

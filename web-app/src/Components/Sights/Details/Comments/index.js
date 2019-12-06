@@ -3,11 +3,11 @@ import CommentsList from './List';
 import FloatingButton from 'Components/UI/Button/Floating';
 import NewCommentField from './New';
 import View from 'Components/UI/View';
-import useRole from 'hooks/useRole';
+import useAccount from 'hooks/useAccount';
 
 const Comments = ({ sightId }) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
-  const { isLoggedIn } = useRole();
+  const { isLoggedIn } = useAccount();
 
   const label = showCommentForm ? '-' : '+';
   const color = showCommentForm ? 'red' : 'teal lighten-2';

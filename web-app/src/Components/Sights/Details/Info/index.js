@@ -1,11 +1,11 @@
 import React from 'react';
 import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
-import useRole from 'hooks/useRole';
+import useAccount from 'hooks/useAccount';
 import APIClient from 'ApiClient';
 
 const SightInfo = ({ sight }) => {
-  const { isAdmin } = useRole();
+  const { isAdmin } = useAccount();
 
   const deleteSight = () => {
     APIClient.deleteSight(sight.id);
