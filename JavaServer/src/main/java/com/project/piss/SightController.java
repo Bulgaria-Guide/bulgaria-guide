@@ -17,7 +17,7 @@ import java.util.List;
 //add service layer for better abstraction
 //add patch operation
 
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RestController
 public class SightController {
 
