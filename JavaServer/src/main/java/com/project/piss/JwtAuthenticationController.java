@@ -1,6 +1,8 @@
 package com.project.piss;
 
 import com.project.piss.config.JwtTokenUtil;
+import com.project.piss.dao.UserDao;
+import com.project.piss.models.DAOUser;
 import com.project.piss.models.JwtRequest;
 import com.project.piss.models.JwtResponse;
 import com.project.piss.models.UserDTO;
@@ -13,6 +15,8 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -27,8 +31,14 @@ public class JwtAuthenticationController {
     private JwtUserDetailsService userDetailsService;
 
     @RequestMapping(value = "/v1/users/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
-        return ResponseEntity.ok(userDetailsService.save(user));
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+        DAOUser daoUser = null;
+        try{
+            daoUser = userDetailsService.save(user);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpServletResponse.SC_CONFLICT).build();
+        }
+        return ResponseEntity.ok(daoUser);
     }
 
     @RequestMapping(value = "/v1/users/login", method = RequestMethod.POST)
