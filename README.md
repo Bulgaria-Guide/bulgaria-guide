@@ -78,8 +78,7 @@ Bulgaria Guide is ...
 
 ```json
 {
-  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf",
-  "role": "admin"
+  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf"
 }
 ```
 
@@ -95,6 +94,10 @@ Bulgaria Guide is ...
 #### Route
 
 `GET /v1/users/role?username=aa`
+
+#### Authorization
+
+`Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Response
 
