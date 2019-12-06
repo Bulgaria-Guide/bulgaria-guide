@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import Text from '../UI/Text';
 import ContainerLayout from '../UI/ContainerLayout';
 import SearchBar from '../Seach/Bar';
-import useRole from '../../hooks/useRole';
+import useAccount from 'hooks/useAccount';
 
 const Home = () => {
-  const { isLoggedIn } = useRole();
+  const { isLoggedIn } = useAccount();
 
   const roleText = useMemo(
     () => (isLoggedIn

@@ -7,8 +7,8 @@ const RoleType = {
   'guest': 'guest'
 };
 
-export default function useRole() {
-  const { role, setRole } = useContext(AccountContext);
+export default function useAccount() {
+  const { role, setRole, authToken, setAuthToken } = useContext(AccountContext);
 
   const isAdmin = useMemo(
     () => role === RoleType.admin,
@@ -20,14 +20,21 @@ export default function useRole() {
     [role]
   );
 
-  const loginAs = useCallback(newRole => setRole(newRole), [setRole]);
+  const loginAs = useCallback((role, token) => {
+    setRole(role);
+    setAuthToken(token);
+  }, [setAuthToken, setRole]);
 
-  const logout = useCallback(() => setRole('guest'), [setRole]);
+  const logout = useCallback(() => {
+    setRole('guest');
+    setAuthToken('');
+  }, [setAuthToken, setRole]);
 
   return {
     isAdmin,
     isLoggedIn,
     loginAs,
-    logout
+    logout,
+    authToken
   };
 }

@@ -78,8 +78,7 @@ Bulgaria Guide is ...
 
 ```json
 {
-  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf",
-  "role": "admin"
+  "token": "2i7y4e1i2en1jnd112sdjabsflihbsafbsf"
 }
 ```
 
@@ -95,6 +94,10 @@ Bulgaria Guide is ...
 #### Route
 
 `GET /v1/users/role?username=aa`
+
+#### Authorization
+
+`Bearer 2i7y4e1i2en1jnd112sdjabsflihbsafbsf`
 
 #### Response
 
@@ -195,7 +198,7 @@ None
   "id": "123",
   "name": "test-name",
   "description": "test-description",
-  "picturePath": "/tmp/pic1",
+  "picture": "base64 encoded picture",
   "workingTimeFrom": "8",
   "workingTimeTo": "17",
   "price": "12",
@@ -240,7 +243,7 @@ None
     "id": "123",
     "name": "test-name",
     "description": "test-description",
-    "picturePath": "/tmp/pic1",
+    "picture": "base64 encoded picture",
     "workingTimeFrom": "8",
     "workingTimeTo": "17",
     "price": "12",
@@ -258,7 +261,7 @@ None
     "id": "123",
     "name": "test-name",
     "description": "test-description",
-    "picturePath": "/tmp/pic1",
+    "picture": "base64 encoded picture",
     "workingTimeFrom": "8",
     "workingTimeTo": "17",
     "price": "12",
@@ -276,7 +279,7 @@ None
     "id": "123",
     "name": "test-name",
     "description": "test-description",
-    "picturePath": "/tmp/pic1",
+    "picture": "base64 encoded picture",
     "workingTimeFrom": "8",
     "workingTimeTo": "17",
     "price": "12",
@@ -324,7 +327,7 @@ None
     "id": "123",
     "name": "test-name",
     "description": "test-description",
-    "picturePath": "/tmp/pic1",
+    "picture": "base64 encoded picture",
     "workingTimeFrom": "8",
     "workingTimeTo": "17",
     "price": "12",
@@ -337,7 +340,7 @@ None
     "id": "123",
     "name": "test-name",
     "description": "test-description",
-    "picturePath": "/tmp/pic1",
+    "picture": "base64 encoded picture",
     "workingTimeFrom": "8",
     "workingTimeTo": "17",
     "price": "12",
@@ -350,7 +353,7 @@ None
     "id": "123",
     "name": "test-name",
     "description": "test-description",
-    "picturePath": "/tmp/pic1",
+    "picture": "base64 encoded picture",
     "workingTimeFrom": "8",
     "workingTimeTo": "17",
     "price": "12",

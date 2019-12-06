@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import './styles.css';
 import APIClient from 'ApiClient';
 import useField from 'hooks/useField';
@@ -10,6 +11,7 @@ const RegisterForm = () => {
 
   const [formError, setFormError] = useState('');
   const [formWasSent, setFormWasSent] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const isFormValid = useMemo(() => {
     if (usernameField.content.length < 1 || passwordField.content.length < 1) {
@@ -35,14 +37,18 @@ const RegisterForm = () => {
         'username': usernameField.content,
         'password': passwordField.content
       };
-      console.log(data);
-      APIClient.register(data);
+      APIClient.register(data).then(() => {
+        setShouldRedirect(true);
+      })
+        .catch(
+          () => setFormError('Вече съществува такъв потребител')
+        );
     }
     event.preventDefault();
   }, [isFormValid, passwordField.content, usernameField.content]);
 
   return (
-    <div class="registerbox">
+    <div className="registerbox">
       <h1>Регистрация</h1>
       <form onSubmit={handleSubmit}>
         <p>Име</p>
@@ -65,7 +71,8 @@ const RegisterForm = () => {
           placeholder="Повтори паролата" />
         <input type="submit" value="Регистрация" />
       </form>
-      {formWasSent && <p className="errorMessage">{formError}</p>}
+      {formWasSent && <p style={{ 'color': 'red' }}>{formError}</p>}
+      {shouldRedirect && <Redirect to="/home" />}
     </div>
   );
 };

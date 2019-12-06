@@ -1,10 +1,11 @@
 import request from './request';
 
-// const baseUrl = "http://localhost:3010/v1" // For test Node Server
-// const baseUrl = "http://localhost:8080/v1" // For Java Server
-const baseUrl = 'http://localhost:8081/v1'; // For Load Balancer
+// const baseUrl = 'http://localhost:3010/v1'; // For test Node Server
+const baseUrl = 'http://localhost:8080/v1'; // For Java Server
+// const baseUrl = 'http://localhost:8081/v1'; // For Load Balancer
 
-// const token = '123asd5';
+// eslint-disable-next-line max-len
+// const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxN…8WxzebMeQ6DD0v8Ry505DBwbYJTZw4SzH9jYZ3CQm4l4YLkuw';
 
 const authHeader = jwtToken => Boolean(jwtToken) && {
   'Authorization': `Bearer ${jwtToken}`
@@ -13,30 +14,45 @@ const authHeader = jwtToken => Boolean(jwtToken) && {
 const get = (url, jwtToken) => request({
   'url': baseUrl + url,
   'method': 'GET',
-  'headers': authHeader(jwtToken)
+  'headers': {
+    'Access-Control-Allow-Origin': 'http://localhost:3000',
+    'Access-Control-Allow-Credentials': 'true',
+    ...authHeader(jwtToken)
+  }
 });
 
 const post = (url, data, jwtToken) => request({
   'url': baseUrl + url,
   'method': 'POST',
   data,
-  'headers': authHeader(jwtToken)
+  'headers': {
+    'Access-Control-Allow-Origin': '*',
+    ...authHeader(jwtToken)
+  }
 });
 
 const del = (url, jwtToken) => request({
   'url': baseUrl + url,
   'method': 'DELETE',
-  'headers': authHeader(jwtToken)
+  'headers': {
+    'Access-Control-Allow-Origin': '*',
+    ...authHeader(jwtToken)
+  }
 });
 
 const patch = (url, data, jwtToken) => request({
   'url': baseUrl + url,
   'method': 'PATCH',
   data,
-  'headers': authHeader(jwtToken)
+  'headers': {
+    'Access-Control-Allow-Origin': '*',
+    ...authHeader(jwtToken)
+  }
 });
 
 const register = data => post('/users/register', data);
+
+const getRole = (username, token) => get(`/users/role?username=${username}`, token);
 
 const login = data => post('/users/login', data);
 
@@ -100,8 +116,9 @@ const deleteSightComment = (sightId, commentId, token) => {
 };
 
 const APIClient = {
-  login, // DONE
-  register, // DONE
+  login, // DONE v2
+  register, // DONE v2
+  getRole, // DONE v2
   createSight,
   deleteSight, // DONE
   getSightDetails,

@@ -2,11 +2,11 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import View from '../UI/View';
 import './styles.css';
-import useRole from '../../hooks/useRole';
+import useAccount from 'hooks/useAccount';
 
 const Navbar = () => {
   const title = 'Bulgaria Guide';
-  const { isLoggedIn, isAdmin, logout } = useRole();
+  const { isLoggedIn, isAdmin, logout } = useAccount();
 
   return (
     <nav className="nav-wrapper blue" id="sticky">
