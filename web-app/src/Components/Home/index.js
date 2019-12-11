@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Text from '../UI/Text';
 import ContainerLayout from '../UI/ContainerLayout';
-import SearchBar from '../Seach/Bar';
+import SearchBar from '../Search/Bar';
 import useAccount from 'hooks/useAccount';
 
 const Home = () => {
