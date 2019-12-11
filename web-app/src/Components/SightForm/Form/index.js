@@ -4,29 +4,84 @@ const SightForm = () => (
   <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" />
-          <label for="last_name">Име</label>
+        <div className="input-field col s12">
+          <textarea
+            id="textarea1"
+            className="materialize-textarea" />
+          <label
+            className="active"
+            style={{
+              'backgroundColor': 'transparent',
+              'paddingLeft': 0
+            }}
+            htmlFor="textarea1">Име
+            </label>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" />
-          <label for="last_name">Адрес</label>
+        <div className="input-field col s12">
+          <textarea
+            id="textarea1"
+            className="materialize-textarea" />
+          <label
+            className="active"
+            style={{
+              'backgroundColor': 'transparent',
+              'paddingLeft': 0
+            }}
+            htmlFor="textarea1">Адрес
+            </label>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" />
-          <label for="last_name">Работно време от: </label>
+        <div className="input-field col s12">
+          <textarea
+            id="textarea1"
+            className="materialize-textarea" />
+          <label
+            className="active"
+            style={{
+              'backgroundColor': 'transparent',
+              'paddingLeft': 0
+            }}
+            htmlFor="textarea1">Работно време от:
+            </label>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" />
-          <label for="last_name">Работно време до: </label>
+        <div className="input-field col s12">
+          <textarea
+            id="textarea1"
+            className="materialize-textarea" />
+          <label
+            className="active"
+            style={{
+              'backgroundColor': 'transparent',
+              'paddingLeft': 0
+            }}
+            htmlFor="textarea1">Работно време до:
+            </label>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" />
-          <label for="last_name">Цена</label>
+        <div className="input-field col s12">
+          <textarea
+            id="textarea1"
+            className="materialize-textarea" />
+          <label
+            className="active"
+            style={{
+              'backgroundColor': 'transparent',
+              'paddingLeft': 0
+            }}
+            htmlFor="textarea1">Цена
+            </label>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" />
-          <label for="last_name">Описание</label>
+        <div className="input-field col s12">
+          <textarea
+            id="textarea1"
+            className="materialize-textarea" />
+          <label
+            className="active"
+            style={{
+              'backgroundColor': 'transparent',
+              'font-size': '55px;',
+              'paddingLeft': 0
+            }}
+            htmlFor="textarea1">Описание
+            </label>
         </div>
       </div>
       <div class="btn">
