@@ -16,8 +16,7 @@ public class CommentController {
     @Autowired
     private CommentServiceImpl commentService;
 
-
-    @GetMapping("/v1/comments/{sight_id}/retrieve")
+    @GetMapping("/v1/sights/{sight_id}/comments/retrieve")
     public List<Comment> findSightComments(@PathVariable("sight_id") Long id) {
         return commentService.findAllCommentsForSight(id);
     }

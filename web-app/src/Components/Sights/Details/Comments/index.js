@@ -1,18 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CommentsList from './List';
 import FloatingButton from 'Components/UI/Button/Floating';
 import NewCommentField from './New';
 import View from 'Components/UI/View';
 import useAccount from 'hooks/useAccount';
+import APIClient from 'ApiClient';
 
 const Comments = ({ sightId }) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
+  const [comments, setComments] = useState([]);
   const { isLoggedIn } = useAccount();
 
   const label = showCommentForm ? '-' : '+';
   const color = showCommentForm ? 'red' : 'teal lighten-2';
 
-  return (
+  useEffect(() => {
+    if (sightId) {
+      const fetchComments = () => APIClient.getSightComments(sightId)
+        .then(res => {
+          console.log(res);
+          setComments(res);
+        })
+        .catch(err => console.error(err));
+      fetchComments();
+    }
+  }, [sightId]
+  );
+
+  return comments.length > 0 ? (
     <View>
       <h3>Коментари</h3>
       {isLoggedIn && <FloatingButton
@@ -23,9 +38,9 @@ const Comments = ({ sightId }) => {
       />
       }
       {showCommentForm && <NewCommentField sightId={sightId} />}
-      <CommentsList sightId={sightId} />
+      <CommentsList comments={comments} />
     </View>
-  );
+  ) : null;
 };
 
 export default Comments;

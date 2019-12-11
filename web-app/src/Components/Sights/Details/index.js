@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Comments from './Comments';
 import ContainerLayout from '../../UI/ContainerLayout';
 import SightInfo from './Info';
-// import APIClient from '../../../ApiClient';
-import constants from 'resources/constants';
-
-const tempSight = constants.sights.details;
+import APIClient from 'ApiClient';
 
 const SightDetails = props => {
-  // const sight = APIClient.getSightDetails(props.match.params.id);
-  // remove location.sight
-  const sight = props.location.sight || tempSight;
+
+  const [sight, setSight] = useState({});
+
+  useEffect(() => {
+    const fetchSight = () => APIClient.getSightDetails(props.match.params.id)
+      .then(res => setSight(res))
+      .catch(err => console.error(err));
+    fetchSight();
+  }, [props.match.params.id]
+  );
 
   return (
     <ContainerLayout header={sight.name}>
-      <SightInfo sight={sight} />
-      <Comments sight={sight.id} />
+      {sight && <SightInfo sight={sight} />}
+      <Comments sightId={sight.id} />
     </ContainerLayout>
   );
 };

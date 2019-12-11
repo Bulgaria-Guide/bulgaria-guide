@@ -2,12 +2,8 @@ import React, { useMemo, useCallback } from 'react';
 import SightCard from './Card';
 import View from '../../UI/View';
 import PendingSightCard from './Pending';
-import constants from 'resources/constants';
 
-const sights = constants.sights.list;
-
-// function SightsList({ sights, pending = false }) {
-function SightsList({ pending = false }) {
+function SightsList({ sights, pending = false }) {
 
   const renderSight = useCallback(sight => (pending
     ? <PendingSightCard sight={sight} key={sight.id} />
@@ -16,7 +12,7 @@ function SightsList({ pending = false }) {
 
   const sightsList = useMemo(
     () => sights.map(renderSight),
-    [renderSight]);
+    [renderSight, sights]);
 
   return (
     <View>
