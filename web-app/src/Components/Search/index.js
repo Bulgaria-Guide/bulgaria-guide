@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import SearchBar from '../Seach/Bar';
+import SearchBar from './Bar';
 import SightsList from '../Sights/List';
 import ContainerLayout from '../UI/ContainerLayout';
 import APIClient from 'ApiClient';
@@ -10,12 +10,10 @@ const Search = () => {
   const onSubmit = useCallback(data => {
     APIClient.getSightsBy(data)
       .then(res => {
-        console.log(res);
-        setSights(data);
+        setSights(res);
       })
-      .catch(err => {
-        console.log(err);
-        return null;
+      .catch(() => {
+        setSights([]);
       });
   }, []);
 
