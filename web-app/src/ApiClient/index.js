@@ -101,7 +101,7 @@ const rateSight = (sightId, rating, token) => {
   return patch(url, data, token);
 };
 
-const getSightComments = sightId => get(`sights/${sightId}/comments/retrieve`);
+const getSightComments = sightId => get(`/sights/${sightId}/comments/retrieve`);
 
 const addSightComment = (sightId, content, token) => {
   const url = `/sights/${sightId}/comments/add`;
