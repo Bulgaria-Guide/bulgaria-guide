@@ -56,7 +56,7 @@ const getRole = (username, token) => get(`/users/role?username=${username}`, tok
 
 const login = data => post('/users/login', data);
 
-const createSight = (data, token) => post('/sightForm', data, token);
+const createSight = (data, token) => post('/sights/create', data, token);
 
 const deleteSight = (sightId, token) => del(`/sights/${sightId}/delete`, token);
 

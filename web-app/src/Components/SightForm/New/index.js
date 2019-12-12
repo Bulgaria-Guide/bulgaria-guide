@@ -15,7 +15,7 @@ const SightForm = () => (
               'paddingLeft': 0
             }}
             htmlFor="textarea1">Име
-            </label>
+          </label>
         </div>
         <div className="input-field col s12">
           <textarea
@@ -28,7 +28,7 @@ const SightForm = () => (
               'paddingLeft': 0
             }}
             htmlFor="textarea1">Адрес
-            </label>
+          </label>
         </div>
         <div className="input-field col s12">
           <textarea
@@ -41,7 +41,7 @@ const SightForm = () => (
               'paddingLeft': 0
             }}
             htmlFor="textarea1">Работно време от:
-            </label>
+          </label>
         </div>
         <div className="input-field col s12">
           <textarea
@@ -54,7 +54,7 @@ const SightForm = () => (
               'paddingLeft': 0
             }}
             htmlFor="textarea1">Работно време до:
-            </label>
+          </label>
         </div>
         <div className="input-field col s12">
           <textarea
@@ -67,7 +67,7 @@ const SightForm = () => (
               'paddingLeft': 0
             }}
             htmlFor="textarea1">Цена
-            </label>
+          </label>
         </div>
         <div className="input-field col s12">
           <textarea
@@ -81,7 +81,7 @@ const SightForm = () => (
               'paddingLeft': 0
             }}
             htmlFor="textarea1">Описание
-            </label>
+          </label>
         </div>
       </div>
       <div class="btn">
