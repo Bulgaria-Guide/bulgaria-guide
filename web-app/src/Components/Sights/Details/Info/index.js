@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
+import { Redirect } from 'react-router-dom';
 import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
 import useAccount from 'hooks/useAccount';
 import APIClient from 'ApiClient';
 
 const SightInfo = ({ sight }) => {
-  const { isAdmin } = useAccount();
+  const { isAdmin, authToken } = useAccount();
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
-  const deleteSight = () => {
-    APIClient.deleteSight(sight.id);
-  };
+  const deleteSight = useCallback(() => {
+    APIClient.deleteSight(sight.id, authToken)
+      .then(() => setShouldRedirect(true))
+      .catch(err => console.error(err));
+  }, [authToken, sight.id]);
 
   return (
     <div className="row">
@@ -36,6 +40,7 @@ const SightInfo = ({ sight }) => {
           </div>
         </div>
       </div>
+      {shouldRedirect && <Redirect to="/sights" />}
     </div>
   );
 };
