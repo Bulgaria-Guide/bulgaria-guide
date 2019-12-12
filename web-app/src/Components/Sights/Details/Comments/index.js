@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import CommentsList from './List';
 import FloatingButton from 'Components/UI/Button/Floating';
 import NewCommentField from './New';
 import View from 'Components/UI/View';
+import Text from 'Components/UI/Text';
 import useAccount from 'hooks/useAccount';
 import APIClient from 'ApiClient';
 
@@ -24,7 +25,13 @@ const Comments = ({ sightId }) => {
   }, [sightId]
   );
 
-  return comments.length > 0 ? (
+  const commentsData = useMemo(
+    () => (comments.length > 0
+      ? <CommentsList comments={comments} updateCommentsList={setComments} />
+      : <Text>Няма коментари за тази забележителност</Text>),
+    [comments]);
+
+  return (
     <View>
       <h3>Коментари</h3>
       {isLoggedIn && <FloatingButton
@@ -35,9 +42,9 @@ const Comments = ({ sightId }) => {
       />
       }
       {showCommentForm && <NewCommentField sightId={sightId} />}
-      <CommentsList comments={comments} />
+      {commentsData}
     </View>
-  ) : null;
+  );
 };
 
 export default Comments;
