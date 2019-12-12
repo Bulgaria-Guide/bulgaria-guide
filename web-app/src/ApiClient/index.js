@@ -104,33 +104,39 @@ const rateSight = (sightId, rating, token) => {
 const getSightComments = sightId => get(`/sights/${sightId}/comments/retrieve`);
 
 const addSightComment = (sightId, content, token) => {
-  const url = `/sights/${sightId}/comments/add`;
+  const url = '/comments/create';
+  const data = {
+    sightId,
+    content
+  };
 
-  return post(url, { content }, token);
+  return post(url, data, token);
 };
 
-const deleteSightComment = (sightId, commentId, token) => {
-  const url = `/sights/${sightId}/comments/${commentId}/delete`;
+const deleteComment = (commentId, token) => {
+  const url = `/comments/${commentId}/delete`;
 
   return del(url, token);
 };
 
+// DONE v1 => sending correct data
+// DONE v2 => use the response appropriately
 const APIClient = {
   login, // DONE v2
   register, // DONE v2
   getRole, // DONE v2
-  createSight,
-  deleteSight, // DONE
-  getSightDetails,
-  getPendingSights, // DONE -- add Token
-  getAllSights, // DONE -- to be deleted in a bit
-  getSightsBy, // DONE
-  approveSight, // DONE
-  declineSight, // DONE
-  rateSight,
-  getSightComments, // DONE
-  addSightComment, // DONE
-  deleteSightComment // DONE
+  createSight, // -- wait for Niya
+  deleteSight, // DONE v2
+  getSightDetails, // DONE v2
+  getPendingSights, // DONE v1 -- add Token
+  getAllSights, // DONE v2 --should be removed later
+  getSightsBy, // DONE v1  -- wait for Todor
+  approveSight, // DONE v1 -- wait for Todor
+  declineSight, // DONE v1 -- wait for Todor
+  rateSight, // -- wait for Niya
+  getSightComments, // DONE v2
+  addSightComment, // DONE v2
+  deleteComment // DONE v2
 };
 
 // Might do something like Account/Sights/Comments Managers
