@@ -17,10 +17,7 @@ const Comments = ({ sightId }) => {
   useEffect(() => {
     if (sightId) {
       const fetchComments = () => APIClient.getSightComments(sightId)
-        .then(res => {
-          console.log(res);
-          setComments(res);
-        })
+        .then(res => setComments(res))
         .catch(err => console.error(err));
       fetchComments();
     }
