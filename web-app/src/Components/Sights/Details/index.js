@@ -19,7 +19,7 @@ const SightDetails = props => {
   return (
     <ContainerLayout header={sight.name}>
       {sight && <SightInfo sight={sight} />}
-      <Comments sightId={sight.id} />
+      {sight && <Comments sightId={sight.id} />}
     </ContainerLayout>
   );
 };

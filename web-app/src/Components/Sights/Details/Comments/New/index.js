@@ -1,15 +1,17 @@
 import React, { useCallback } from 'react';
 import APIClient from 'ApiClient';
 import useField from 'hooks/useField';
+import useAccount from 'hooks/useAccount';
 
 const NewCommentField = ({ sightId }) => {
-
   const { content, handleChange } = useField();
+  const { authToken } = useAccount();
+
   const handleSubmit = useCallback(event => {
     console.log(content);
-    APIClient.addSightComment(sightId, content);
+    APIClient.addSightComment(sightId, content, authToken);
     event.preventDefault();
-  }, [content, sightId]);
+  }, [authToken, content, sightId]);
 
   return (
     <div className="row">
