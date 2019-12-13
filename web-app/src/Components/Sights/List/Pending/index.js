@@ -4,17 +4,21 @@ import Text from 'Components/UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
 import APIClient from 'ApiClient';
 
-const PendingSightCard = ({ sight }) => {
+const PendingSightCard = ({ sight, onManageSight }) => {
 
   const handleAccept = useCallback(event => {
-    APIClient.approveSight(sight.id);
+    APIClient.approveSight(sight.id)
+      .then(() => onManageSight())
+      .catch(err => console.error(err));
     event.preventDefault();
-  }, [sight.id]);
+  }, [onManageSight, sight.id]);
 
   const handleDecline = useCallback(event => {
-    APIClient.declineSight(sight.id);
+    APIClient.declineSight(sight.id)
+      .then(() => onManageSight())
+      .catch(err => console.error(err));
     event.preventDefault();
-  }, [sight.id]);
+  }, [onManageSight, sight.id]);
 
   return (
     <div className="col s12 m7">

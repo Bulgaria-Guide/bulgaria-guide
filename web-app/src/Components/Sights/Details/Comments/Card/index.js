@@ -4,11 +4,13 @@ import useAccount from 'hooks/useAccount';
 import FloatingButton from 'Components/UI/Button/Floating';
 import APIClient from 'ApiClient';
 
-const CommentCard = props => {
-  const { isAdmin } = useAccount();
+const CommentCard = ({ comment, onDeleteComment }) => {
+  const { isAdmin, authToken } = useAccount();
 
   const deleteComment = event => {
-    APIClient.deleteComment(props.comment.id);
+    APIClient.deleteComment(comment.id, authToken)
+      .then(onDeleteComment)
+      .catch(console.err);
     event.preventDefault();
   };
 
@@ -31,10 +33,10 @@ const CommentCard = props => {
             'paddingTop': 0,
             'paddingBottom': 0
           }}>
-            <Text className="header">{props.comment.authorName}</Text>
+            <Text className="header">{comment.authorName}</Text>
           </div>
           <div className="card-content grey lighten-4" >
-            <Text>{props.comment.content}</Text>
+            <Text>{comment.content}</Text>
           </div>
         </div>
       </div>

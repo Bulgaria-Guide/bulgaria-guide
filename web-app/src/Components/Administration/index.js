@@ -19,7 +19,7 @@ const Administration = () => {
   }, []);
   return (
     <ContainerLayout header={'Администрация'}>
-      <SightsList sights={pendingSights} pending />
+      <SightsList sights={pendingSights} pending updateSightsList={setPendingSights} />
     </ContainerLayout>
   );
 };

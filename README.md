@@ -483,7 +483,7 @@ None
 
 #### Route
 
-`POST /v1/sights/:id/comments/add`
+`POST /v1/comments/create`
 
 #### Authorization
 
@@ -493,6 +493,7 @@ None
 
 ```json
 {
+  "sightId": 123,
   "content": "test-content"
 }
 ```
@@ -510,7 +511,7 @@ None
 
 #### Route
 
-`DELETE /v1/sights/:id/comments/:id/delete`
+`DELETE /v1/comments/:id/delete`
 
 #### Authorization - _Admin/Author only_
 
