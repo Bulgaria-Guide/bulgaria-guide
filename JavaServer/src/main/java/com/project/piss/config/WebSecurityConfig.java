@@ -45,29 +45,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-  @Override
-  protected void configure(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.cors();
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.cors();
 
-    // We don't need CSRF for this example
-    httpSecurity.csrf().disable()
-        // dont authenticate this particular request
-        .authorizeRequests()
-        .antMatchers("/v1/users/register", "/v1/users/login", "/v1/sights/{id}/retrieve", "/v1/sights/retrieve", "/v1/sights/{id}/comments/retrieve")
-        .permitAll()
-        .
-        // all other requests need to be authenticated
-        anyRequest()
-        .authenticated()
-        .and().
-        // make sure we use stateless session; session won't be used to
-        // store user's state.
-        exceptionHandling()
-        .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-        .and()
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    // Add a filter to validate the tokens with every request
-    httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-  }
+        // We don't need CSRF for this example
+        httpSecurity.csrf().disable()
+                // dont authenticate this particular request
+                .authorizeRequests()
+                .antMatchers("/v1/users/register", "/v1/users/login", "/v1/sights/{id}/retrieve", "/v1/sights/retrieve", "/v1/sights/{id}/comments/retrieve")
+                .permitAll()
+                .
+                // all other requests need to be authenticated
+                        anyRequest()
+                .authenticated()
+                .and().
+                // make sure we use stateless session; session won't be used to
+                // store user's state.
+                        exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // Add a filter to validate the tokens with every request
+        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    }
 }
