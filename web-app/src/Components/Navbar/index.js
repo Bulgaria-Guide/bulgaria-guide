@@ -19,6 +19,11 @@ const Navbar = () => {
           <li>
             <NavLink to="/sights">Обекти</NavLink>
           </li>
+          {isLoggedIn &&
+            <li>
+              <NavLink to="/sightForm">Добавяне на обект</NavLink>
+            </li>
+          }
           {!isLoggedIn &&
             <li>
               <NavLink to="/login">Вход</NavLink>
@@ -37,11 +42,6 @@ const Navbar = () => {
           {isLoggedIn &&
             <li>
               <Link onClick={logout} to="/home">Изход</Link>
-            </li>
-          }
-          {isLoggedIn &&
-            <li>
-              <NavLink to="/sightForm">Добавяне на обект</NavLink>
             </li>
           }
         </ul>

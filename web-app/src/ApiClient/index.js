@@ -128,8 +128,8 @@ const APIClient = {
   createSight, // -- wait for Niya
   deleteSight, // DONE v2
   getSightDetails, // DONE v2
-  getPendingSights, // DONE v1 -- add Token
   getAllSights, // DONE v2 --should be removed later
+  getPendingSights, // DONE v1 -- add Token
   getSightsBy, // DONE v1  -- wait for Todor
   approveSight, // DONE v1 -- wait for Todor
   declineSight, // DONE v1 -- wait for Todor
