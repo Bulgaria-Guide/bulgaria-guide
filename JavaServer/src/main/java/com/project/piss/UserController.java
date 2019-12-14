@@ -15,6 +15,6 @@ public class UserController {
     @RequestMapping(value = "/v1/users/role", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getUserRole(@RequestParam("username") String username) {
         String role = (userDao.findByUsername(username).getIsAdmin()) ? "admin" : "user";
-        return ResponseEntity.ok("{\"role\": \""+ role +"\" }");
+        return ResponseEntity.ok("{\"role\": \"" + role + "\" }");
     }
 }

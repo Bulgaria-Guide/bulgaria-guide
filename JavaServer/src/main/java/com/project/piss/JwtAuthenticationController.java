@@ -33,9 +33,9 @@ public class JwtAuthenticationController {
     @RequestMapping(value = "/v1/users/register", method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
         DAOUser daoUser = null;
-        try{
+        try {
             daoUser = userDetailsService.save(user);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpServletResponse.SC_CONFLICT).build();
         }
         return ResponseEntity.ok(daoUser);
