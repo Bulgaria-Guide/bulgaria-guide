@@ -39,6 +39,11 @@ const Navbar = () => {
               <Link onClick={logout} to="/home">Изход</Link>
             </li>
           }
+          {isLoggedIn &&
+            <li>
+              <NavLink to="/sightForm">Добавяне на обект</NavLink>
+            </li>
+          }
         </ul>
       </View>
     </nav>

@@ -4,6 +4,7 @@ import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
 import useAccount from 'hooks/useAccount';
 import APIClient from 'ApiClient';
+import RatingStars from 'Components/UI/Rating/Stars';
 
 const SightInfo = ({ sight }) => {
   const { isAdmin, authToken } = useAccount();
@@ -27,6 +28,7 @@ const SightInfo = ({ sight }) => {
             <div className="card-image">
               <img src={sight.picture_path} />
               <span className="card-title">{sight.name}</span>
+              <RatingStars />
             </div>
             <Text>{`Местоположение: ${sight.address}`}</Text>
             <Text>
