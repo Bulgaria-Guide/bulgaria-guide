@@ -1,5 +1,5 @@
 import React from 'react';
-import SightForm from 'Components/SightForm/Form';
+import SightForm from 'Components/SightForm/New';
 import ContainerLayout from '../UI/ContainerLayout';
 
 const CreateSight = () => (

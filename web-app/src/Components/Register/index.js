@@ -3,7 +3,7 @@ import RegisterForm from './Form';
 import ContainerLayout from '../UI/ContainerLayout';
 
 const Register = () => (
-  <ContainerLayout header="Register">
+  <ContainerLayout header="">
     <RegisterForm />
   </ContainerLayout>
 );
