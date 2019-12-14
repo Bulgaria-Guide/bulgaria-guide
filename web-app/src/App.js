@@ -17,7 +17,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
       <Route path="/sights" component={Search} />
-      <Route path="/sightForm" component={SightForm} />
+      <Route path="/add-sight" component={SightForm} />
       <Route path="/details/:id" component={SightDetails} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
