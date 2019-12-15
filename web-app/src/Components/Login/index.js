@@ -8,9 +8,9 @@ const Login = () => {
 
   return (
     <ContainerLayout header="">
-      
-      <a class="waves-effect waves-light btn-large" disabled={role === 'admin'} onClick={() => setRole('admin')}>Go admin</a>
-     
+
+      <a class="waves-effect waves-light btn-large" disabled={role === 'admin'}
+        onClick={() => setRole('admin')}>Go admin</a>
       <LoginForm />
     </ContainerLayout>
   );
