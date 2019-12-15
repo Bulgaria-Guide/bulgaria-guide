@@ -15,6 +15,13 @@ public interface SightRepository
     @Query(value = "SELECT * FROM sights s WHERE s.is_pending = :pendingStatus", nativeQuery = true)
     List<Sight> findSights(boolean pendingStatus);
 
-    @Query(value = "SELECT * FROM sights s WHERE s.is_pending=false ORDER BY :sort DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM sights s WHERE s.is_pending=false ORDER BY id DESC", nativeQuery = true)
     List<Sight> findAllApprovedSights(String sort);
+
+    @Query(value = "SELECT * FROM sights s WHERE s.is_pending=false ORDER BY rating DESC", nativeQuery = true)
+    List<Sight> findAllSightsByRating();
+
+    @Query(value = "SELECT * FROM sights s WHERE s.is_pending=false ORDER BY name", nativeQuery = true)
+    List<Sight> findAllSightsByCategory();
+
 }
