@@ -125,7 +125,7 @@ const APIClient = {
   login, // DONE v2
   register, // DONE v2
   getRole, // DONE v2
-  createSight, // -- wait for Niya
+  createSight, // DONE v2 - check pictures
   deleteSight, // DONE v2
   getSightDetails, // DONE v2
   getAllSights, // DONE v2 --should be removed later
@@ -133,7 +133,7 @@ const APIClient = {
   getSightsBy, // DONE v1  -- wait for Todor
   approveSight, // DONE v1 -- wait for Todor
   declineSight, // DONE v1 -- wait for Todor
-  rateSight, // -- wait for Niya
+  rateSight, // DONE v1
   getSightComments, // DONE v2
   addSightComment, // DONE v2
   deleteComment // DONE v2
