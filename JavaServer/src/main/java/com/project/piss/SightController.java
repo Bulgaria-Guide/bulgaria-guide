@@ -115,7 +115,7 @@ public class SightController {
     }
 
 
-    @PatchMapping("/v1/sight/{id}/rating")
+    @PatchMapping("/v1/sights/{id}/rating")
     public ResponseEntity<?> updateRating(@PathVariable("id") long id, @RequestBody Map<String, Integer> values) {
         int rating = values.get("rating");
         return sightService.updateRating(id, rating);
