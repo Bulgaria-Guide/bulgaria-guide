@@ -90,7 +90,7 @@ public class SightServiceImpl implements SightService {
             sight.setRatingSum(newRatingSum);
             sight.setRatingVotes(newRatingVotes);
             repository.save(sight);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok("{\"rating\": \"" + newRating + "\" }");
         } else {
             return ResponseEntity.notFound().build();
         }
