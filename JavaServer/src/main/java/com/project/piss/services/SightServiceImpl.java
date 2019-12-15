@@ -37,7 +37,7 @@ public class SightServiceImpl implements SightService {
 
     @Override
     public List<Sight> findAll() {
-        List<Sight> sights = repository.findAll();
+        List<Sight> sights = repository.findAllApprovedSights();
         sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
         return sights;
     }
@@ -48,9 +48,9 @@ public class SightServiceImpl implements SightService {
 
         if (sort.isPresent()) {
             String sortParam = sort.get();
-            sights = repository.findAll(Sort.by(Sort.Direction.DESC, sortParam));
+            sights = repository.findAllApprovedSights(sortParam);
         } else {
-            sights = repository.findAll();
+            sights = repository.findAllApprovedSights();
         }
 
         sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
