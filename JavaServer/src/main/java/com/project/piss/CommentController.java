@@ -1,6 +1,5 @@
 package com.project.piss;
 
-
 import com.project.piss.models.Comment;
 import com.project.piss.services.CommentService;
 import com.project.piss.services.CommentServiceImpl;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin
 @RestController
 public class CommentController {
 
