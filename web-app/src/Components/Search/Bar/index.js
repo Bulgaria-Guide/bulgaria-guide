@@ -14,8 +14,8 @@ const SearchBar = ({ onSubmit }) => {
       onChange={categoryField.handleChange}
       className="browser-default"
     >
-      <option value="" disabled>Изберете категория:</option>
-      <option value="all">Всички</option>
+      <option disabled>Изберете категория:</option>
+      <option value="">Всички</option>
       <option value="historical">Исторически</option>
       <option value="culture">Културни</option>
       <option value="sports">Спортни</option>
@@ -34,11 +34,6 @@ const SearchBar = ({ onSubmit }) => {
       <option value="2">С по-висока оценка от 2</option>
       <option value="3">С по-висока оценка от 3</option>
       <option value="4">С по-висока оценка от 4</option>
-      <option value="5">С по-висока оценка от 5</option>
-      <option value="6">С по-висока оценка от 6</option>
-      <option value="7">С по-висока оценка от 7</option>
-      <option value="8">С по-висока оценка от 8</option>
-      <option value="9">С по-висока оценка от 9</option>
     </select>
   ), [ratingField.content, ratingField.handleChange]);
 
@@ -50,7 +45,7 @@ const SearchBar = ({ onSubmit }) => {
     >
       <option value="" disabled>Изберете начин на сортиране:</option>
       <option value="rating">По рейтинг</option>
-      <option value="alphabetical">По азбучен ред</option>
+      <option value="name">По азбучен ред</option>
     </select>
   ), [sortMethodField.content, sortMethodField.handleChange]);
 

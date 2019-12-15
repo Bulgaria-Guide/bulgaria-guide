@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import ContainerLayout from '../UI/ContainerLayout';
 import SightsList from '../Sights/List';
 import APIClient from 'ApiClient';
+import useAccount from 'hooks/useAccount';
 
 const Administration = () => {
   const [pendingSights, setPendingSights] = useState([]);
+  const { authToken } = useAccount();
 
   useEffect(() => {
-    APIClient.getPendingSights()
+    APIClient.getPendingSights(authToken)
       .then(res => {
         console.log(res);
         setPendingSights(res);
@@ -16,7 +18,7 @@ const Administration = () => {
         console.log(err);
         return null;
       });
-  }, []);
+  }, [authToken]);
   return (
     <ContainerLayout header={'Администрация'}>
       <SightsList sights={pendingSights} pending updateSightsList={setPendingSights} />
