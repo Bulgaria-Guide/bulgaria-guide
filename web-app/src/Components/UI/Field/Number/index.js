@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TextField = ({ fieldName, label, cols = 12 }) => (
+const NumberField = ({ fieldName, label, cols = 12 }) => (
   <div className={`input-field col s${cols}`}>
     <input
-      type="text"
+      type="number"
       name={fieldName}
     />
     <label
@@ -14,7 +14,7 @@ const TextField = ({ fieldName, label, cols = 12 }) => (
       }}
       htmlFor="textarea1">{label}
     </label>
-  </div>
+  </div >
 );
 
-export default TextField;
+export default NumberField;
