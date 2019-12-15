@@ -24,4 +24,5 @@ public interface SightService {
 
     List<Sight> findSights(Optional<String> sort, Optional<String> category, Optional<Integer> minRating);
 
+    List<Sight> findPending();
 }
