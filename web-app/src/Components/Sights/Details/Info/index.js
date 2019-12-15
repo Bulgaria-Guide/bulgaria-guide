@@ -7,8 +7,19 @@ import APIClient from 'ApiClient';
 import RatingStars from 'Components/UI/Rating/Stars';
 
 const SightInfo = ({ sight }) => {
-  const { isAdmin, authToken } = useAccount();
+  const { isAdmin, isLoggedIn, authToken } = useAccount();
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [ratingWasSent, setRatingWasSent] = useState(false);
+
+  const onSetRating = useCallback(rating => {
+    console.log(rating);
+    APIClient.rateSight(sight.id, rating, authToken)
+      .then(({ 'rating': newRating }) => {
+        setRatingWasSent(true);
+        sight.rating = newRating;
+      })
+      .then(console.error);
+  }, [authToken, sight.id, sight.rating]);
 
   const deleteSight = useCallback(() => {
     APIClient.deleteSight(sight.id, authToken)
@@ -28,7 +39,10 @@ const SightInfo = ({ sight }) => {
             <div className="card-image">
               <img src={sight.picture_path} />
               <span className="card-title">{sight.name}</span>
-              <RatingStars />
+              <Text>
+                {`Рейтинг: ${sight.rating}/5`}
+              </Text>
+              {isLoggedIn && !ratingWasSent && <RatingStars onClick={onSetRating} />}
             </div>
             <Text>{`Местоположение: ${sight.address}`}</Text>
             <Text>

@@ -1,6 +1,6 @@
 import React from 'react';
-import SightForm from 'Components/SightForm/Form';
-import ContainerLayout from '../UI/ContainerLayout';
+import SightForm from './Form';
+import ContainerLayout from 'Components/UI/ContainerLayout';
 
 const CreateSight = () => (
   <ContainerLayout header="Добавяне на обект">

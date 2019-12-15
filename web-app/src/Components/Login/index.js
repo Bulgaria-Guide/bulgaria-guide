@@ -7,7 +7,7 @@ const Login = () => {
   const { role, setRole } = useContext(AccountContext);
 
   return (
-    <ContainerLayout header="Login">
+    <ContainerLayout>
       <button disabled={role === 'admin'} onClick={() => setRole('admin')}>Go Admin</button>
       <LoginForm />
     </ContainerLayout>
