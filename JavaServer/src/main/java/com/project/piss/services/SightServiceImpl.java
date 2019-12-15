@@ -35,7 +35,7 @@ public class SightServiceImpl implements SightService {
     @Override
     public List<Sight> findAll() {
         List<Sight> sights = repository.findAll();
-        sights.forEach(sight -> sight.setPicture_path(URL + sight.getPicture_path()));
+        sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
         return sights;
 
     }
@@ -88,7 +88,7 @@ public class SightServiceImpl implements SightService {
     public ResponseEntity<?> deleteSight(Long id) {
         return repository.findById(id)
                 .map(sight -> {
-                    delete(sight.getPicture_path(), id);
+                    delete(sight.getPicturePath(), id);
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
@@ -98,5 +98,23 @@ public class SightServiceImpl implements SightService {
         File file = new File(URL + imageName);
         file.delete();
         repository.deleteById(id);
+    }
+
+    @Override
+    public ResponseEntity<?> update(long id, boolean isApproved) {
+        if (isApproved) {
+            if (repository.findById(id).isPresent()) {
+                Sight sight = repository.findById(id).get();
+                final boolean isPending = false;
+                sight.setIsPending(isPending);
+                repository.save(sight);
+
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } else {
+            return deleteSight(id);
+        }
     }
 }

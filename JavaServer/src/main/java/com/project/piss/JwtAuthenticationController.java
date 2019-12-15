@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000")
+@CrossOrigin
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;

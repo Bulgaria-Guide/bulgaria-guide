@@ -19,4 +19,5 @@ public interface SightService {
 
     ResponseEntity<?> deleteSight(Long id);
 
+    ResponseEntity<?> update(long id, boolean isApproved);
 }

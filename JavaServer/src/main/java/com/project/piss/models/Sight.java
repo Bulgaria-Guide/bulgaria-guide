@@ -71,11 +71,19 @@ public class Sight {
         this.is_pending = is_pending;
     }
 
-    public String getPicture_path() {
+    public String getPicturePath() {
         return picture_path;
     }
 
-    public void setPicture_path(String picture_path) {
-        this.picture_path = picture_path;
+    public void setPicturePath(String picturePath) {
+        this.picture_path = picturePath;
+    }
+
+    public boolean getIsPending() {
+        return is_pending;
+    }
+
+    public void setIsPending(boolean isPending) {
+        this.is_pending = isPending;
     }
 }

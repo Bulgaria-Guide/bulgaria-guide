@@ -11,13 +11,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 //add optional parameters in get
 //add service layer for better abstraction
 //add patch operation
 
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000")
+@CrossOrigin
 @RestController
 public class SightController {
 
@@ -28,7 +31,6 @@ public class SightController {
     private SightService sightService;
 
 
-    //implement exception
     @CrossOrigin
     @GetMapping("/v1/sights/{id}/retrieve")
     public Sight findAById(@PathVariable("id") Long id) {
@@ -36,14 +38,20 @@ public class SightController {
     }
 
 
+    //test it
     //add optional arguments
+    //    @RequestParam(value = "sort") Optional<String> sortMethod
+    //    @RequestParam(value = "category") Optional<String> category
+//    @RequestParam(value = "min-rating") Optional<Integer> minRating
+    //    @RequestParam(value = "is-working") Optional<Boolean> isWorking
     @GetMapping("/v1/sights/retrieve")
-    public List<Sight> findAll() {
+    public List<Sight> findAll(@PathVariable(value = "sort") Optional<String> sortMethod, @RequestParam(value = "category") Optional<String> category,
+                               @RequestParam(value = "min-rating") Optional<Integer> minRating, @RequestParam(value = "is-working") Optional<Boolean> isWorking) {
+//        sortMethod.ifPresent();
         return sightService.findAll();
     }
 
 
-    //remove all arguments and add class on their place
     @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Sight create(@RequestParam("name") String name,
                         @RequestParam("description") String description,
@@ -67,10 +75,11 @@ public class SightController {
         return sightService.deleteSight(id);
     }
 
+    @PatchMapping("/v1/sights/{id}/manage")
+    public ResponseEntity<?> updateSight(@PathVariable("id") long id, @RequestBody Map<String, Boolean> values) {
 
-//    @PatchMapping("/v1/sights/{id}/manage")
-//    public ResponseEntity<Sight> updateSight(@PathVariable("id") long id, @RequestParam("title") String title, @RequestParam("file") MultipartFile file
-//    ) {
-//        return sightService.update(id, title, file);
-//    }
+        boolean isApproved = values.get("accepted");
+        return sightService.update(id, isApproved);
+    }
+
 }
