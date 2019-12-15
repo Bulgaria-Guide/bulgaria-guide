@@ -3,22 +3,25 @@ import { NavLink } from 'react-router-dom';
 import Text from 'Components/UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
 import APIClient from 'ApiClient';
+import useAccount from 'hooks/useAccount';
 
 const PendingSightCard = ({ sight, onManageSight }) => {
 
+  const { authToken } = useAccount();
+
   const handleAccept = useCallback(event => {
-    APIClient.approveSight(sight.id)
+    APIClient.approveSight(sight.id, authToken)
       .then(() => onManageSight())
       .catch(err => console.error(err));
     event.preventDefault();
-  }, [onManageSight, sight.id]);
+  }, [authToken, onManageSight, sight.id]);
 
   const handleDecline = useCallback(event => {
-    APIClient.declineSight(sight.id)
+    APIClient.declineSight(sight.id, authToken)
       .then(() => onManageSight())
       .catch(err => console.error(err));
     event.preventDefault();
-  }, [onManageSight, sight.id]);
+  }, [authToken, onManageSight, sight.id]);
 
   return (
     <div className="col s12 m7">
