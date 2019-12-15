@@ -1,9 +1,8 @@
 package com.project.piss.services;
 
-import com.project.piss.repositories.SightRepository;
 import com.project.piss.models.Sight;
+import com.project.piss.repositories.SightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,7 +36,7 @@ public class SightServiceImpl implements SightService {
 
     @Override
     public List<Sight> findAll() {
-        List<Sight> sights = repository.findAllApprovedSights();
+        List<Sight> sights = repository.findSights(false);
         sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
         return sights;
     }
@@ -50,7 +49,7 @@ public class SightServiceImpl implements SightService {
             String sortParam = sort.get();
             sights = repository.findAllApprovedSights(sortParam);
         } else {
-            sights = repository.findAllApprovedSights();
+            sights = repository.findSights(false);
         }
 
         sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
@@ -66,6 +65,11 @@ public class SightServiceImpl implements SightService {
         }
 
         return sights;
+    }
+
+    @Override
+    public List<Sight> findPending() {
+        return repository.findSights(true);
     }
 
 

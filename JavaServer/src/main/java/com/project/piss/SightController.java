@@ -78,6 +78,11 @@ public class SightController {
         return sightService.findSights(sort, category, minRating);
     }
 
+    @GetMapping("/v1/sights/retrieve/pending")
+    public List<Sight> findPending() {
+        return sightService.findPending();
+    }
+
 
     @PostMapping(value = "/v1/sights/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Sight create(@RequestParam("name") String name,
