@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
 import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
@@ -9,13 +9,10 @@ import RatingStars from 'Components/UI/Rating/Stars';
 
 const SightInfo = ({ sight }) => {
   const { isAdmin, isLoggedIn, authToken } = useAccount();
+
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [ratingWasSent, setRatingWasSent] = useState(false);
-  const [rating, setRating] = useState(0.0);
-
-  useEffect(() => {
-    setRating(sight.rating || 0.0);
-  }, [sight, sight.rating]);
+  const [rating, setRating] = useState(sight.rating);
 
   const onSetRating = useCallback(rating => {
     APIClient.rateSight(sight.id, rating, authToken)
@@ -44,7 +41,7 @@ const SightInfo = ({ sight }) => {
             <div className="card-image">
               {
                 // sight.picture_path &&
-                <img src={require(`../../../../resources/images/${sight.picture_path}`)} />
+                // <img src={require(`../../../../resources/images/${sight.picture_path}`)} />
               }
               <span className="card-title">{sight.name}</span>
               <Text>

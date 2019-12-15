@@ -70,7 +70,9 @@ const SearchBar = ({ onSubmit }) => {
       'sortMethod': sortMethodField.content,
       'isWorking': openedOnlyField
     };
-    onSubmit(data);
+    if (onSubmit) {
+      onSubmit(data);
+    }
     event.preventDefault();
   }, [
     categoryField.content,

@@ -6,7 +6,7 @@ import APIClient from 'ApiClient';
 
 const SightDetails = props => {
 
-  const [sight, setSight] = useState({});
+  const [sight, setSight] = useState();
 
   useEffect(() => {
     const fetchSight = () => APIClient.getSightDetails(props.match.params.id)
@@ -19,12 +19,12 @@ const SightDetails = props => {
   }, [props.match.params.id]
   );
 
-  return (
+  return sight ? (
     <ContainerLayout header={sight.name}>
-      {sight && <SightInfo sight={sight} />}
-      {sight && <Comments sightId={sight.id} />}
+      <SightInfo sight={sight} />
+      <Comments sightId={sight.id} />
     </ContainerLayout>
-  );
+  ) : null;
 };
 
 export default SightDetails;
