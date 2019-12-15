@@ -85,7 +85,7 @@ public class SightServiceImpl implements SightService {
             int ratingVotes = sight.getRatingVotes();
             int newRatingSum = ratingSum + rating;
             int newRatingVotes = ratingVotes + 1;
-            double newRating = newRatingSum / newRatingVotes;
+            double newRating = (double) newRatingSum / newRatingVotes;
             sight.setRating(newRating);
             sight.setRatingSum(newRatingSum);
             sight.setRatingVotes(newRatingVotes);
