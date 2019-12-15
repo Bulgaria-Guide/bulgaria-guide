@@ -1,0 +1,20 @@
+.field {
+    border: 3px solid;
+    border-radius: 16px;
+    border-color: #4db6ac; 
+    margin-bottom: 38px;
+    position: absolute;
+    height: 850px;
+    width: 700px;
+    margin: -100px 0 0 -200px;
+    top: 30%;
+    left: 40%;
+}
+
+.label-style{
+  font-weight: bold;
+}
+
+#button {
+    width: 100%;
+ }

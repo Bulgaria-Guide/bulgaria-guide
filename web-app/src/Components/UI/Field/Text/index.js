@@ -10,7 +10,8 @@ const TextField = ({ fieldName, label }) => (
       className="active"
       style={{
         'backgroundColor': 'transparent',
-        'paddingLeft': 0
+        'paddingLeft': 0,
+        'font-weight': 'bold'
       }}
       htmlFor="textarea1">{label}
     </label>

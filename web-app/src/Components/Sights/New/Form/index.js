@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import useAccount from 'hooks/useAccount';
 import TextField from 'Components/UI/Field/Text';
 import APIClient from 'ApiClient';
+import './styles.css';
 
 const SightForm = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -31,9 +32,16 @@ const SightForm = () => {
       <form
         className="col s12"
         onSubmit={handleSubmit}>
-        <div className="row">
+        <div className="field">
           <TextField fieldName="name" label="Име" />
-          <label>Изберете категория</label>
+          <TextField fieldName="address" label="Адрес" />
+          <TextField fieldName="longitude" label="Longitude" />
+          <TextField fieldName="latitude" label="Latitude" />
+          <TextField fieldName="workingTimeFrom" label="Работно време от:" />
+          <TextField fieldName="workingTimeTo" label="Работно време до:" />
+          <TextField fieldName="price" label="Цена:" />
+          <TextField fieldName="description" label="Описание:" />
+          <label class="label-style"> Изберете категория</label>
           <select
             defaultValue=""
             name="category"
@@ -44,13 +52,6 @@ const SightForm = () => {
             <option value="sports">Спортни</option>
             <option value="rest">Отдих</option>
           </select>
-          <TextField fieldName="address" label="Адрес" />
-          <TextField fieldName="longitude" label="Longitude" />
-          <TextField fieldName="latitude" label="Latitude" />
-          <TextField fieldName="workingTimeFrom" label="Работно време от:" />
-          <TextField fieldName="workingTimeTo" label="Работно време до:" />
-          <TextField fieldName="price" label="Цена:" />
-          <TextField fieldName="description" label="Описание:" />
           <div>
             <span>Снимка: </span>
             <input type="file" name="picture" />
@@ -61,7 +62,8 @@ const SightForm = () => {
               className="waves-effect waves-light btn-large"
               style={{
                 'zIndex': 0,
-                'flex': 1
+                'flex': 1,
+                'width': 300,
               }}
               id="button"
               type="submit"
