@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import './styles.css';
 import useField from 'hooks/useField';
 
@@ -6,7 +6,7 @@ const SearchBar = ({ onSubmit }) => {
   const categoryField = useField('');
   const ratingField = useField('');
   const sortMethodField = useField('');
-  const [openedOnlyField, setOpenedOnlyField] = useState(false);
+  // const [openedOnlyField, setOpenedOnlyField] = useState(false);
 
   const categoryDropdown = useMemo(() => (
     <select
@@ -49,26 +49,26 @@ const SearchBar = ({ onSubmit }) => {
     </select>
   ), [sortMethodField.content, sortMethodField.handleChange]);
 
-  const openedOnly = useMemo(() => (
-    <div className="switch">
-      <label>
-        Покажи само отворени
-        <input
-          type="checkbox"
-          value={openedOnlyField}
-          onChange={() => setOpenedOnlyField(!openedOnlyField)}
-        />
-        <span className="lever"></span>
-      </label>
-    </div>
-  ), [openedOnlyField]);
+  // const openedOnly = useMemo(() => (
+  //   <div className="switch">
+  //     <label>
+  //       Покажи само отворени
+  //       <input
+  //         type="checkbox"
+  //         value={openedOnlyField}
+  //         onChange={() => setOpenedOnlyField(!openedOnlyField)}
+  //       />
+  //       <span className="lever"></span>
+  //     </label>
+  //   </div>
+  // ), [openedOnlyField]);
 
   const handleSubmit = useCallback(event => {
     const data = {
       'category': categoryField.content,
       'minRating': ratingField.content,
-      'sortMethod': sortMethodField.content,
-      'isWorking': openedOnlyField
+      'sortMethod': sortMethodField.content
+      // 'isWorking': openedOnlyField
     };
     if (onSubmit) {
       onSubmit(data);
@@ -77,7 +77,6 @@ const SearchBar = ({ onSubmit }) => {
   }, [
     categoryField.content,
     onSubmit,
-    openedOnlyField,
     ratingField.content,
     sortMethodField.content
   ]);
@@ -87,13 +86,13 @@ const SearchBar = ({ onSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col s12">
-            <h4>Намери туристически обекти</h4>
+            <h4 align="center" >Намери туристически обекти</h4>
           </div>
           <div className="input-field col s4">{categoryDropdown}</div>
           <div className="input-field col s4">{ratingDropdown}</div>
           <div className="input-field col s4">{sortDropdown}</div>
-          <div className="input-field col s3">{openedOnly}</div>
-          <div className="input-field col s9">
+          {/* <div className="input-field col s3">{openedOnly}</div> */}
+          <div className="input-field col s12">
             <input
               className="waves-effect waves-light btn-large"
               style={{ 'zIndex': 0 }}
