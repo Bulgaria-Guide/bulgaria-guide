@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
 import Text from '../../../UI/Text';
@@ -37,7 +38,10 @@ const SightInfo = ({ sight }) => {
               'right': 0
             }} label="X" onClick={deleteSight} />}
             <div className="card-image">
-            {sight.picture_path && <img src={require(`../../../../resources/images/${sight.picture_path}`)} />}
+              {
+                sight.picture_path &&
+                <img src={require(`../../../../resources/images/${sight.picture_path}`)} />
+              }
               <span className="card-title">{sight.name}</span>
               <Text>
                 {`Рейтинг: ${sight.rating}/5`}
@@ -49,7 +53,9 @@ const SightInfo = ({ sight }) => {
               {`Работно време: от ${sight.working_time_from} до ${sight.working_time_to}`}
             </Text>
             <Text>{`Цена: ${sight.price} лв.`}</Text>
-            {sight.weather && <Text>{`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C.`}</Text>}
+            {sight.weather &&
+              <Text>{`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C.`}</Text>
+            }
             <Text>{sight.description}</Text>
           </div>
         </div>

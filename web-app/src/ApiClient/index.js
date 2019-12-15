@@ -4,9 +4,6 @@ import request from './request';
 const baseUrl = 'http://localhost:8081/v1'; // For Java Server
 // const baseUrl = 'http://localhost:8081/v1'; // For Load Balancer
 
-// eslint-disable-next-line max-len
-// const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxN…8WxzebMeQ6DD0v8Ry505DBwbYJTZw4SzH9jYZ3CQm4l4YLkuw';
-
 const authHeader = jwtToken => Boolean(jwtToken) && {
   'Authorization': `Bearer ${jwtToken}`
 };
@@ -68,16 +65,16 @@ const getAllSights = () => {
   return get(url);
 };
 
-const getPendingSights = () => get('/sights/retrieve?state=pending');
+const getPendingSights = token => get('/sights/retrieve/pending', token);
 
-const getSightsBy = ({ sortMethod, category, minRating, isWorking, state }) => {
-  const sort = sortMethod ? `sort=${sortMethod}&` : '';
+const getSightsBy = ({ sortMethod, category, minRating, state }) => {
+  const sort = sortMethod ? `sort=${sortMethod}` : '';
   const cat = category ? `category=${category}&` : '';
   const minR = minRating ? `min-rating=${minRating}&` : '';
-  const working = `isworking=${isWorking}&`;
   const pending = state ? 'state=pending' : '';
 
-  const url = `/sights/retrieve?${sort}${cat}${minR}${working}${pending}`;
+  const url = `/sights/retrieve?${sort}${cat}${minR}${pending}`;
+
   return get(url);
 };
 
