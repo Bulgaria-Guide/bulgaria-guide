@@ -47,7 +47,11 @@ public class SightServiceImpl implements SightService {
 
         if (sort.isPresent()) {
             String sortParam = sort.get();
-            sights = repository.findAllApprovedSights(sortParam);
+            if (sortParam.equals("rating")) {
+                sights = repository.findAllSightsByRating();
+            } else {
+                sights = repository.findAllSightsByCategory();
+            }
         } else {
             sights = repository.findSights(false);
         }
