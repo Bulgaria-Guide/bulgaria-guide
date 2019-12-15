@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import CommentsList from './List';
 import FloatingButton from 'Components/UI/Button/Floating';
 import NewCommentField from './New';
@@ -25,11 +25,16 @@ const Comments = ({ sightId }) => {
   }, [sightId]
   );
 
-  const commentsData = useMemo(
-    () => (comments.length > 0
-      ? <CommentsList comments={comments} updateCommentsList={setComments} />
-      : <Text>Няма коментари за тази забележителност</Text>),
-    [comments]);
+  const onAddComment = useCallback(newComment => {
+    const newComments = comments;
+    newComments.push(newComment);
+    setComments(newComments);
+    setShowCommentForm(false);
+  }, [comments]);
+
+  const commentsData = comments.length > 0
+    ? <CommentsList comments={comments} updateCommentsList={setComments} />
+    : <Text>Няма коментари за тази забележителност</Text>;
 
   return (
     <View>
@@ -41,7 +46,7 @@ const Comments = ({ sightId }) => {
         onClick={() => setShowCommentForm(!showCommentForm)}
       />
       }
-      {showCommentForm && <NewCommentField sightId={sightId} />}
+      {showCommentForm && <NewCommentField sightId={sightId} onAddComment={onAddComment} />}
       {commentsData}
     </View>
   );

@@ -3,15 +3,21 @@ import APIClient from 'ApiClient';
 import useField from 'hooks/useField';
 import useAccount from 'hooks/useAccount';
 
-const NewCommentField = ({ sightId }) => {
+const NewCommentField = ({ sightId, onAddComment }) => {
   const { content, handleChange } = useField();
   const { authToken } = useAccount();
 
   const handleSubmit = useCallback(event => {
     console.log(content);
-    APIClient.addSightComment(sightId, content, authToken);
+    APIClient.addSightComment(sightId, content, authToken)
+      .then(onAddComment());
     event.preventDefault();
-  }, [authToken, content, sightId]);
+  }, [
+    authToken,
+    content,
+    onAddComment,
+    sightId
+  ]);
 
   return (
     <div className="row">
