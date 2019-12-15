@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
@@ -11,23 +11,27 @@ const SightInfo = ({ sight }) => {
   const { isAdmin, isLoggedIn, authToken } = useAccount();
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [ratingWasSent, setRatingWasSent] = useState(false);
+  const [rating, setRating] = useState(0.0);
+
+  useEffect(() => {
+    setRating(sight.rating || 0.0);
+  }, [sight, sight.rating]);
 
   const onSetRating = useCallback(rating => {
-    console.log(rating);
     APIClient.rateSight(sight.id, rating, authToken)
       .then(({ 'rating': newRating }) => {
         setRatingWasSent(true);
-        sight.rating = newRating;
+        setRating(parseFloat(newRating));
       })
-      .then(console.error);
-  }, [authToken, sight.id, sight.rating]);
+      .catch(console.error);
+  }, [authToken, sight.id]);
 
   const deleteSight = useCallback(() => {
     APIClient.deleteSight(sight.id, authToken)
       .then(() => setShouldRedirect(true))
       .catch(err => console.error(err));
   }, [authToken, sight.id]);
-  console.log(sight);
+
   return (
     <div className="row">
       <div className="col s12">
@@ -39,12 +43,12 @@ const SightInfo = ({ sight }) => {
             }} label="X" onClick={deleteSight} />}
             <div className="card-image">
               {
-                sight.picture_path &&
+                // sight.picture_path &&
                 <img src={require(`../../../../resources/images/${sight.picture_path}`)} />
               }
               <span className="card-title">{sight.name}</span>
               <Text>
-                {`Рейтинг: ${sight.rating}/5`}
+                {`Рейтинг: ${rating.toFixed(2)}/5`}
               </Text>
               {isLoggedIn && !ratingWasSent && <RatingStars onClick={onSetRating} />}
             </div>

@@ -23,7 +23,7 @@ const post = (url, data, jwtToken) => request({
   'method': 'POST',
   data,
   'headers': {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'http://localhost:3000',
     ...authHeader(jwtToken)
   }
 });
@@ -32,7 +32,7 @@ const del = (url, jwtToken) => request({
   'url': baseUrl + url,
   'method': 'DELETE',
   'headers': {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'http://localhost:3000',
     ...authHeader(jwtToken)
   }
 });
@@ -42,7 +42,8 @@ const patch = (url, data, jwtToken) => request({
   'method': 'PATCH',
   data,
   'headers': {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'http://localhost:3000',
+    'Access-Control-Allow-Credentials': 'true',
     ...authHeader(jwtToken)
   }
 });
@@ -59,21 +60,14 @@ const deleteSight = (sightId, token) => del(`/sights/${sightId}/delete`, token);
 
 const getSightDetails = sightId => get(`/sights/${sightId}/retrieve`);
 
-const getAllSights = () => {
-  const url = '/sights/retrieve';
-
-  return get(url);
-};
-
 const getPendingSights = token => get('/sights/retrieve/pending', token);
 
-const getSightsBy = ({ sortMethod, category, minRating, state }) => {
+const getSightsBy = ({ sortMethod, category, minRating }) => {
   const sort = sortMethod ? `sort=${sortMethod}` : '';
   const cat = category ? `category=${category}&` : '';
   const minR = minRating ? `min-rating=${minRating}&` : '';
-  const pending = state ? 'state=pending' : '';
 
-  const url = `/sights/retrieve?${sort}${cat}${minR}${pending}`;
+  const url = `/sights/retrieve?${sort}${cat}${minR}`;
 
   return get(url);
 };
@@ -92,7 +86,7 @@ const declineSight = (sightId, token) => {
 };
 
 const rateSight = (sightId, rating, token) => {
-  const url = `/sights/${sightId}/rate`;
+  const url = `/sights/${sightId}/rating`;
   const data = { rating };
 
   return patch(url, data, token);
@@ -125,12 +119,11 @@ const APIClient = {
   createSight, // DONE v2 - check pictures
   deleteSight, // DONE v2
   getSightDetails, // DONE v2
-  getAllSights, // DONE v2 --should be removed later
-  getPendingSights, // DONE v1 -- add Token
-  getSightsBy, // DONE v1  -- wait for Todor
+  getPendingSights, // DONE v2
+  getSightsBy, // DONE v2
   approveSight, // DONE v2
   declineSight, // DONE v2
-  rateSight, // DONE v1 -- wait for Todor
+  rateSight, // DONE v2
   getSightComments, // DONE v2
   addSightComment, // DONE v2
   deleteComment // DONE v2
