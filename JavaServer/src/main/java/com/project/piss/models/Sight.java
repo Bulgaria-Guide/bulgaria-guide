@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "sights")
 public class Sight {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
@@ -69,6 +68,62 @@ public class Sight {
         this.latitude = latitude;
         this.category = category;
         this.is_pending = is_pending;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public String getPicture_path() {
+        return picture_path;
+    }
+
+    public int getWorking_time_from() {
+        return working_time_from;
+    }
+
+    public int getWorking_time_to() {
+        return working_time_to;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public double getLat() {
+        return latitude;
+    }
+
+    public double getLon() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
     public String getPicturePath() {
