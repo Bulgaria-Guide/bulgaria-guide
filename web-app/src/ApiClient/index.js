@@ -131,9 +131,9 @@ const APIClient = {
   getAllSights, // DONE v2 --should be removed later
   getPendingSights, // DONE v1 -- add Token
   getSightsBy, // DONE v1  -- wait for Todor
-  approveSight, // DONE v1 -- wait for Todor
-  declineSight, // DONE v1 -- wait for Todor
-  rateSight, // DONE v1
+  approveSight, // DONE v2
+  declineSight, // DONE v2
+  rateSight, // DONE v1 -- wait for Todor
   getSightComments, // DONE v2
   addSightComment, // DONE v2
   deleteComment // DONE v2
