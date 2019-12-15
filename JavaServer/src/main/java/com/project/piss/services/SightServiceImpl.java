@@ -3,6 +3,7 @@ package com.project.piss.services;
 import com.project.piss.repositories.SightRepository;
 import com.project.piss.models.Sight;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -37,8 +40,34 @@ public class SightServiceImpl implements SightService {
         List<Sight> sights = repository.findAll();
         sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
         return sights;
-
     }
+
+    @Override
+    public List<Sight> findSights(Optional<String> sort, Optional<String> category, Optional<Integer> minRating) {
+        List<Sight> sights;
+
+        if (sort.isPresent()) {
+            String sortParam = sort.get();
+            sights = repository.findAll(Sort.by(Sort.Direction.DESC, sortParam));
+        } else {
+            sights = repository.findAll();
+        }
+
+        sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
+
+        if (minRating.isPresent()) {
+            int minRatingParam = minRating.get();
+            sights = sights.stream().filter(sight -> sight.getRating() > minRatingParam).collect(Collectors.toList());
+        }
+
+        if (category.isPresent()) {
+            String categoryParam = category.get();
+            sights = sights.stream().filter(sight -> sight.getCategory().equals(categoryParam)).collect(Collectors.toList());
+        }
+
+        return sights;
+    }
+
 
     @Override
     public Sight save(String name, String description, MultipartFile picture, int workingTimeFrom, int workingTimeTo, double price, String address, double longitude, double latitude, String category) throws IOException {
