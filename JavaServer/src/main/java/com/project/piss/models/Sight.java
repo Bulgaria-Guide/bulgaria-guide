@@ -23,11 +23,37 @@ public class Sight {
     @Column(name = "rating")
     private double rating;
 
+    @Column(name = "rating_sum")
+    private int ratingSum;
+
+    @Column(name = "rating_votes")
+    private int ratingVotes;
+
     @Column(name = "picture_path")
     private String picture_path;
 
     @Column(name = "working_time_from")
     private int working_time_from;
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public int getRatingSum() {
+        return ratingSum;
+    }
+
+    public void setRatingSum(int ratingSum) {
+        this.ratingSum = ratingSum;
+    }
+
+    public int getRatingVotes() {
+        return ratingVotes;
+    }
+
+    public void setRatingVotes(int ratingVotes) {
+        this.ratingVotes = ratingVotes;
+    }
 
     @Column(name = "working_time_to")
     private int working_time_to;

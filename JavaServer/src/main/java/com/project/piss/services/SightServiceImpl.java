@@ -72,6 +72,26 @@ public class SightServiceImpl implements SightService {
         return repository.findSights(true);
     }
 
+    @Override
+    public ResponseEntity<?> updateRating(long id, int rating) {
+        Optional<Sight> sightResponse = repository.findById(id);
+        if (sightResponse.isPresent()) {
+            Sight sight = sightResponse.get();
+            int ratingSum = sight.getRatingSum();
+            int ratingVotes = sight.getRatingVotes();
+            int newRatingSum = ratingSum + rating;
+            int newRatingVotes = ratingVotes + 1;
+            double newRating = newRatingSum / newRatingVotes;
+            sight.setRating(newRating);
+            sight.setRatingSum(newRatingSum);
+            sight.setRatingVotes(newRatingVotes);
+            repository.save(sight);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     @Override
     public Sight save(String name, String description, MultipartFile picture, int workingTimeFrom, int workingTimeTo, double price, String address, double longitude, double latitude, String category) throws IOException {
