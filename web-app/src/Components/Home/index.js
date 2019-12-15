@@ -5,7 +5,7 @@ import SightsList from 'Components/Sights/List';
 import APIClient from 'ApiClient';
 
 const Home = () => {
-  const [sights, setSights] = useState([]);
+  const [sights, setSights] = useState();
 
   const onSubmit = useCallback(data => {
     APIClient.getSightsBy(data)
@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <ContainerLayout>
       <SearchBar onSubmit={onSubmit} />
-      <SightsList sights={sights} />
+      {sights && <SightsList sights={sights} />}
     </ContainerLayout>
   );
 };

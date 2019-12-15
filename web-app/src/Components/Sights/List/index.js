@@ -22,7 +22,7 @@ function SightsList({ sights, pending = false, updateSightsList }) {
   return (
     <View>
       {sights.length === 0
-        ? <div>Loading...</div>
+        ? <div>Не бяха намерени резултати</div>
         : sightsList}
     </View>
   );
