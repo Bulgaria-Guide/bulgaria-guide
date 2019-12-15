@@ -21,7 +21,7 @@ const Navbar = () => {
           </li>
           {isLoggedIn &&
             <li>
-              <NavLink to="/sightForm">Добавяне на обект</NavLink>
+              <NavLink to="/sight/add">Добавяне на обект</NavLink>
             </li>
           }
           {!isLoggedIn &&

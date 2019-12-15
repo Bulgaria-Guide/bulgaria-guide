@@ -3,7 +3,7 @@ import Navbar from './Components/Navbar/index';
 import Home from './Components/Home';
 import Search from './Components/Search';
 import SightDetails from './Components/Sights/Details';
-import SightForm from './Components/Sights/New/Form';
+import SightForm from './Components/Sights/New';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Administration from './Components/Administration';
