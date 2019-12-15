@@ -44,11 +44,13 @@ const PendingSightCard = ({ sight, onManageSight }) => {
           onClick={handleDecline}
           color="red" />
         <div className="card-image">
-          <img
-            src="https://lorempixel.com/100/190/nature/6"
-            height="100%"
-            alt={sight.name}
-          />
+        {sight.picture_path && <img
+          src={require(`../../../../resources${sight.picture_path}`)}
+          height="200px"
+          width="450px"
+          alt={sight.name}
+        />
+        }
         </div>
         <div className="card-stacked">
           <div className="card-content" style={{ 'paddingTop': 0 }}>

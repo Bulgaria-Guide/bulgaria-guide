@@ -1,7 +1,7 @@
 import request from './request';
 
 // const baseUrl = 'http://localhost:3010/v1'; // For test Node Server
-const baseUrl = 'http://localhost:8080/v1'; // For Java Server
+const baseUrl = 'http://localhost:8081/v1'; // For Java Server
 // const baseUrl = 'http://localhost:8081/v1'; // For Load Balancer
 
 // eslint-disable-next-line max-len

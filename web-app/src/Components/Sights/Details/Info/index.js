@@ -26,7 +26,7 @@ const SightInfo = ({ sight }) => {
       .then(() => setShouldRedirect(true))
       .catch(err => console.error(err));
   }, [authToken, sight.id]);
-
+  console.log(sight);
   return (
     <div className="row">
       <div className="col s12">
@@ -37,7 +37,7 @@ const SightInfo = ({ sight }) => {
               'right': 0
             }} label="X" onClick={deleteSight} />}
             <div className="card-image">
-              <img src={sight.picture_path} />
+            {sight.picture_path && <img src={require(`../../../../resources/images/${sight.picture_path}`)} />}
               <span className="card-title">{sight.name}</span>
               <Text>
                 {`Рейтинг: ${sight.rating}/5`}
@@ -46,12 +46,10 @@ const SightInfo = ({ sight }) => {
             </div>
             <Text>{`Местоположение: ${sight.address}`}</Text>
             <Text>
-              {`Работно време: от ${sight.workingTimeFrom} до ${sight.workingTimeTo}`}
+              {`Работно време: от ${sight.working_time_from} до ${sight.working_time_to}`}
             </Text>
             <Text>{`Цена: ${sight.price} лв.`}</Text>
-            {/* <Text>
-              {`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C.`}
-            </Text> */}
+            {sight.weather && <Text>{`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C.`}</Text>}
             <Text>{sight.description}</Text>
           </div>
         </div>

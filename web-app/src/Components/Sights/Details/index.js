@@ -10,7 +10,10 @@ const SightDetails = props => {
 
   useEffect(() => {
     const fetchSight = () => APIClient.getSightDetails(props.match.params.id)
-      .then(res => setSight(res))
+      .then(res => {
+        console.log(res);
+        setSight(res);
+      })
       .catch(err => console.error(err));
     fetchSight();
   }, [props.match.params.id]

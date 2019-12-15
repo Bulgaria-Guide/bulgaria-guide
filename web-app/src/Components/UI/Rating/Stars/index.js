@@ -3,7 +3,6 @@ import './styles.css';
 
 const RatingStars = ({ onClick }) => (
   <fieldset className="rating">
-    <h1>Рейтинг</h1>
     <input type="radio" id="star5" name="rating" onChange={() => onClick(5)} />
     <label className="full" htmlFor="star5" />
     <input type="radio" id="star4" name="rating" onChange={() => onClick(4)} />

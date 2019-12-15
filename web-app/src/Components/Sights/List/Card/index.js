@@ -6,11 +6,13 @@ const SightCard = ({ sight }) => (
   <div className="col s12 m7">
     <div className="card horizontal">
       <div className="card-image">
-        <img
-          src={sight.picture}
-          height="100%"
+        {sight.picture_path && <img
+          src={require(`../../../../resources${sight.picture_path}`)}
+          height="200px"
+          width="450px"
           alt={sight.name}
         />
+        }
       </div>
       <div className="card-stacked">
         <div className="card-content" style={{ 'paddingTop': 0 }}>
