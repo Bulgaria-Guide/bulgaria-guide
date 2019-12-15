@@ -64,7 +64,7 @@ const SightInfo = ({ sight }) => {
           </div>
         </div>
       </div>
-      {shouldRedirect && <Redirect to="/sights" />}
+      {shouldRedirect && <Redirect to="/home" />}
     </div>
   );
 };
