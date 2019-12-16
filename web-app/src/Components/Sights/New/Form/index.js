@@ -13,7 +13,6 @@ const SightForm = () => {
 
   const handleSubmit = useCallback(event => {
     event.preventDefault();
-    console.log(event.target);
     const data = new FormData(event.target);
     const price = parseFloat(data.get('price'));
     data.set('price', price);
@@ -59,10 +58,10 @@ const SightForm = () => {
               <input type="file" name="picture" />
             </div>
             <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <textarea name="description" id="description" class="materialize-textarea"></textarea>
               <label
                 className="active"
-                htmlFor="textarea1"
+                htmlFor="description"
                 style={{
                   'backgroundColor': 'transparent',
                   'paddingLeft': 0

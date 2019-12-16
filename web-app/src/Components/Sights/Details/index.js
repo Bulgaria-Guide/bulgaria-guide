@@ -12,13 +12,12 @@ const SightDetails = props => {
   useEffect(() => {
     const fetchSight = () => APIClient.getSightDetails(props.match.params.id)
       .then(res => {
-        console.log(res);
         if (!res.id) {
           setShouldRedirect(true);
         }
         setSight(res);
       })
-      .catch(err => console.error(err));
+      .catch(console.error);
     fetchSight();
   }, [props.match.params.id]
   );

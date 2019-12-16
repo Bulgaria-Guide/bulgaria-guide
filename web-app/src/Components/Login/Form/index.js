@@ -26,7 +26,7 @@ const LoginForm = () => {
           });
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
         setUnsuccessfulLogin(true);
       });
     event.preventDefault();

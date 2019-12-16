@@ -8,9 +8,9 @@ const NewCommentField = ({ sightId, onAddComment }) => {
   const { authToken } = useAccount();
 
   const handleSubmit = useCallback(event => {
-    console.log(content);
     APIClient.addSightComment(sightId, content, authToken)
-      .then(onAddComment());
+      .then(onAddComment)
+      .catch(console.error);
     event.preventDefault();
   }, [
     authToken,

@@ -1,7 +1,7 @@
 import request from './request';
 
 // const baseUrl = 'http://localhost:3010/v1'; // For test Node Server
-const baseUrl = 'http://localhost:8081/v1'; // For Java Server
+const baseUrl = 'http://localhost:8080/v1'; // For Java Server
 // const baseUrl = 'http://localhost:8081/v1'; // For Load Balancer
 
 const authHeader = jwtToken => Boolean(jwtToken) && {
@@ -110,26 +110,21 @@ const deleteComment = (commentId, token) => {
   return del(url, token);
 };
 
-// DONE v1 => sending correct data
-// DONE v2 => use the response appropriately
 const APIClient = {
-  login, // DONE v2
-  register, // DONE v2
-  getRole, // DONE v2
-  createSight, // DONE v2 - check pictures
-  deleteSight, // DONE v2
-  getSightDetails, // DONE v2
-  getPendingSights, // DONE v2
-  getSightsBy, // DONE v2
-  approveSight, // DONE v2
-  declineSight, // DONE v2
-  rateSight, // DONE v2
-  getSightComments, // DONE v2
-  addSightComment, // DONE v2
-  deleteComment // DONE v2
+  login,
+  register,
+  getRole,
+  createSight,
+  deleteSight,
+  getSightDetails,
+  getPendingSights,
+  getSightsBy,
+  approveSight,
+  declineSight,
+  rateSight,
+  getSightComments,
+  addSightComment,
+  deleteComment
 };
-
-// Might do something like Account/Sights/Comments Managers
-// with just CRUD options like CommentsManager.add(content);
 
 export default APIClient;

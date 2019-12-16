@@ -1,20 +1,9 @@
 import axios from 'axios';
-import constants from 'resources/constants';
 
-const client = axios.create({
-  'baseURL': constants.api.baseURL
-});
-
-// const client = axios.create({
-//   baseURL: constants.api.url,
-//   auth: {
-//     Authorization: 'Bearer ' + {token}
-//   }
-// });
+const client = axios.create();
 
 const onSuccess = response => {
   console.debug('Request Successful!', response);
-
   return response.data;
 };
 
@@ -25,7 +14,6 @@ const onError = error => {
     console.error('Data:', error.response.data);
     console.error('Headers:', error.response.headers);
   } else {
-    // Maybe retry;
     console.error('Error Message:', error.message);
   }
 
@@ -35,9 +23,5 @@ const onError = error => {
 const request = options => client(options)
   .then(onSuccess)
   .catch(onError);
-
-// const request = options => client(options)
-//   .then(onSuccess)
-//   .catch(onError);
 
 export default request;
