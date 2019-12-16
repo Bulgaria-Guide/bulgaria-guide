@@ -16,9 +16,6 @@ const Navbar = () => {
           <li>
             <NavLink to="/home">Начало</NavLink>
           </li>
-          <li>
-            <NavLink to="/sights">Обекти</NavLink>
-          </li>
           {isLoggedIn &&
             <li>
               <NavLink to="/sight/add">Добавяне на обект</NavLink>

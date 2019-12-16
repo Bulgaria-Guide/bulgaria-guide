@@ -18,7 +18,7 @@ const SightCard = ({ sight }) => (
       <div className="card-stacked">
         <div className="card-content" style={{ 'paddingTop': 0 }}>
           <h4 className="header">{`${sight.name}`}</h4>
-          <Text>{sight.description.substr(0, 135).concat('...')}</Text>
+          <Text>{sight.description.substr(0, 300).concat('...')}</Text>
         </div>
         <div className="card-action">
           <NavLink to={`/details/${sight.id}`}>

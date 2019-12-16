@@ -3,28 +3,32 @@ import Comments from './Comments';
 import ContainerLayout from '../../UI/ContainerLayout';
 import SightInfo from './Info';
 import APIClient from 'ApiClient';
+import { Redirect } from 'react-router-dom';
 
 const SightDetails = props => {
-
-  const [sight, setSight] = useState({});
+  const [sight, setSight] = useState();
+  const [shouldRedirect, setShouldRedirect] = useState();
 
   useEffect(() => {
     const fetchSight = () => APIClient.getSightDetails(props.match.params.id)
       .then(res => {
-        console.log(res);
+        if (!res.id) {
+          setShouldRedirect(true);
+        }
         setSight(res);
       })
-      .catch(err => console.error(err));
+      .catch(console.error);
     fetchSight();
   }, [props.match.params.id]
   );
 
-  return (
+  return sight ? (
     <ContainerLayout header={sight.name}>
-      {sight && <SightInfo sight={sight} />}
-      {sight && <Comments sightId={sight.id} />}
+      <SightInfo sight={sight} />
+      <Comments sightId={sight.id} />
+      {shouldRedirect && <Redirect to="/home" />}
     </ContainerLayout>
-  );
+  ) : null;
 };
 
 export default SightDetails;

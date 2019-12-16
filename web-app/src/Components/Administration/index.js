@@ -5,25 +5,20 @@ import APIClient from 'ApiClient';
 import useAccount from 'hooks/useAccount';
 
 const Administration = () => {
-  const [pendingSights, setPendingSights] = useState([]);
+  const [pendingSights, setPendingSights] = useState();
   const { authToken } = useAccount();
 
   useEffect(() => {
     APIClient.getPendingSights(authToken)
-      .then(res => {
-        console.log(res);
-        setPendingSights(res);
-      })
-      .catch(err => {
-        console.log(err);
-        return null;
-      });
+      .then(setPendingSights)
+      .catch(console.error);
   }, [authToken]);
-  return (
+
+  return pendingSights ? (
     <ContainerLayout header={'Администрация'}>
       <SightsList sights={pendingSights} pending updateSightsList={setPendingSights} />
     </ContainerLayout>
-  );
+  ) : null;
 };
 
 export default Administration;

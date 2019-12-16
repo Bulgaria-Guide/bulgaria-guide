@@ -1,21 +1,19 @@
 /* eslint-disable no-undef */
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
 import Text from '../../../UI/Text';
 import FloatingButton from 'Components/UI/Button/Floating';
 import useAccount from 'hooks/useAccount';
 import APIClient from 'ApiClient';
 import RatingStars from 'Components/UI/Rating/Stars';
+import View from 'Components/UI/View';
 
 const SightInfo = ({ sight }) => {
   const { isAdmin, isLoggedIn, authToken } = useAccount();
+
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [ratingWasSent, setRatingWasSent] = useState(false);
-  const [rating, setRating] = useState(0.0);
-
-  useEffect(() => {
-    setRating(sight.rating || 0.0);
-  }, [sight, sight.rating]);
+  const [rating, setRating] = useState(sight.rating);
 
   const onSetRating = useCallback(rating => {
     APIClient.rateSight(sight.id, rating, authToken)
@@ -43,28 +41,42 @@ const SightInfo = ({ sight }) => {
             }} label="X" onClick={deleteSight} />}
             <div className="card-image">
               {
-                // sight.picture_path &&
+                sight.picture_path &&
                 <img src={require(`../../../../resources/images/${sight.picture_path}`)} />
               }
               <span className="card-title">{sight.name}</span>
-              <Text>
-                {`Рейтинг: ${rating.toFixed(2)}/5`}
-              </Text>
+              <Text bold>Рейтинг:</Text>
+              <Text>{`${rating.toFixed(2)}/5`}</Text>
               {isLoggedIn && !ratingWasSent && <RatingStars onClick={onSetRating} />}
             </div>
-            <Text>{`Местоположение: ${sight.address}`}</Text>
-            <Text>
-              {`Работно време: от ${sight.working_time_from} до ${sight.working_time_to}`}
-            </Text>
-            <Text>{`Цена: ${sight.price} лв.`}</Text>
+            <View>
+              <Text bold>Местоположение:</Text>
+              <Text>{` ${sight.address}`}</Text>
+            </View>
+            <View>
+              <Text bold>Работно време - от:</Text>
+              <Text>{` ${sight.working_time_from} `}</Text>
+              <Text bold>до:</Text>
+              <Text>{` ${sight.working_time_to}`}</Text>
+            </View>
+            <View>
+              <Text bold>Цена:</Text>
+              <Text>{` ${sight.price} лв`}</Text>
+            </View>
             {sight.weather &&
-              <Text>{`Времето в момента: ${sight.weather.outlook}, ${sight.weather.temp}C.`}</Text>
+              <View>
+                <Text bold>Времето в момента:</Text>
+                <Text>{` ${sight.weather.outlook}, ${sight.weather.temp} C`}</Text>
+              </View>
             }
-            <Text>{sight.description}</Text>
+            <View>
+              <Text bold>Описание:</Text>
+              <Text>{` ${sight.description}`}</Text>
+            </View>
           </div>
         </div>
       </div>
-      {shouldRedirect && <Redirect to="/sights" />}
+      {shouldRedirect && <Redirect to="/home" />}
     </div>
   );
 };

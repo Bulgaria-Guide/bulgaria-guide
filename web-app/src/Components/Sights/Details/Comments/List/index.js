@@ -1,6 +1,5 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import CommentCard from '../Card';
-import View from 'Components/UI/View';
 
 const CommentsList = ({ comments, updateCommentsList }) => {
 
@@ -9,20 +8,14 @@ const CommentsList = ({ comments, updateCommentsList }) => {
     updateCommentsList(newCommentsList);
   }, [comments, updateCommentsList]);
 
-  const commentsList = useMemo(
-    () => comments.map(comment => (
-      <CommentCard
-        comment={comment}
-        key={comment.id}
-        onDeleteComment={onDeleteComment(comment.id)}
-      />)
-    ), [comments, onDeleteComment]);
+  const commentsList = comments.map(comment => (
+    <CommentCard
+      comment={comment}
+      key={comment.id}
+      onDeleteComment={onDeleteComment(comment.id)}
+    />));
 
-  return (
-    <View>
-      {commentsList}
-    </View>
-  );
+  return commentsList;
 };
 
 export default CommentsList;

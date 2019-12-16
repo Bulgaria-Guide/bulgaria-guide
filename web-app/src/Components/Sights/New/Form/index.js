@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import useAccount from 'hooks/useAccount';
 import TextField from 'Components/UI/Field/Text';
 import APIClient from 'ApiClient';
+import './styles.css';
+import NumberField from 'Components/UI/Field/Number';
 
 const SightForm = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -11,7 +13,6 @@ const SightForm = () => {
 
   const handleSubmit = useCallback(event => {
     event.preventDefault();
-    console.log(event.target);
     const data = new FormData(event.target);
     const price = parseFloat(data.get('price'));
     data.set('price', price);
@@ -27,50 +28,67 @@ const SightForm = () => {
   }, [authToken]);
 
   return (
-    <div className="row">
-      <form
-        className="col s12"
-        onSubmit={handleSubmit}>
-        <div className="row">
-          <TextField fieldName="name" label="Име" />
-          <label>Изберете категория</label>
-          <select
-            defaultValue=""
-            name="category"
-            className="browser-default">
-            <option value="" disabled>Изберете категория:</option>
-            <option value="historical">Исторически</option>
-            <option value="culture">Културни</option>
-            <option value="sports">Спортни</option>
-            <option value="rest">Отдих</option>
-          </select>
-          <TextField fieldName="address" label="Адрес" />
-          <TextField fieldName="longitude" label="Longitude" />
-          <TextField fieldName="latitude" label="Latitude" />
-          <TextField fieldName="workingTimeFrom" label="Работно време от:" />
-          <TextField fieldName="workingTimeTo" label="Работно време до:" />
-          <TextField fieldName="price" label="Цена:" />
-          <TextField fieldName="description" label="Описание:" />
-          <div>
-            <span>Снимка: </span>
-            <input type="file" name="picture" />
+    <div className="wrapper">
+      <div className="row">
+        <form
+          className="col s12"
+          onSubmit={handleSubmit}>
+          <div className="row">
+            <TextField fieldName="name" label="Име" cols={6} />
+            <div className="input-field col s6">
+              <select
+                defaultValue=""
+                name="category"
+                className="browser-default">
+                <option value="" disabled>Изберете категория:</option>
+                <option value="historical">Исторически</option>
+                <option value="culture">Културни</option>
+                <option value="sports">Спортни</option>
+                <option value="rest">Отдих</option>
+              </select>
+            </div>
+            <TextField fieldName="address" label="Адрес" cols={10} />
+            <NumberField fieldName="longitude" label="Longitude" cols={1} />
+            <NumberField fieldName="latitude" label="Latitude" cols={1} />
+            <NumberField fieldName="workingTimeFrom" label="Работно време от:" cols={3} />
+            <NumberField fieldName="workingTimeTo" label="Работно време до:" cols={3} />
+            <NumberField fieldName="price" label="Цена:" cols={3} />
+            <div className="input-field col s3">
+              <span>Качи снимка: </span>
+              <input type="file" name="picture" />
+            </div>
+            <div class="input-field col s12">
+              <textarea name="description" id="description" class="materialize-textarea"></textarea>
+              <label
+                className="active"
+                htmlFor="description"
+                style={{
+                  'backgroundColor': 'transparent',
+                  'paddingLeft': 0
+                }}>Описание</label>
+            </div>
+            {
+              hasFormError &&
+              <p style={{ 'color': 'red' }}>
+                Моля попълнете коректно всички полета
+              </p>
+            }
+            <div className="input-field col s12">
+              <input
+                className="waves-effect waves-light btn-large"
+                style={{
+                  'zIndex': 0,
+                  'flex': 1
+                }}
+                id="button"
+                type="submit"
+                value="ДОБАВИ"
+              />
+            </div>
           </div>
-          {hasFormError && <p style={{ 'color': 'red' }}>Моля попълнете коректно всички полета</p>}
-          <div className="input-field col s9">
-            <input
-              className="waves-effect waves-light btn-large"
-              style={{
-                'zIndex': 0,
-                'flex': 1
-              }}
-              id="button"
-              type="submit"
-              value="ДОБАВИ"
-            />
-          </div>
-        </div>
-      </form>
-      {shouldRedirect && <Redirect to="/home" />}
+        </form>
+        {shouldRedirect && <Redirect to="/home" />}
+      </div>
     </div>
   );
 };
