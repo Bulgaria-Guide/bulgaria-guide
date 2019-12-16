@@ -8,7 +8,7 @@ const SightCard = ({ sight }) => (
       <div className="card-image">
         {sight.picture_path && <img
           // eslint-disable-next-line no-undef
-          src={require(`../../../../resources${sight.picture_path}`)}
+          src={require(`resources/img2/${sight.picture_path}`)}
           height="200px"
           width="450px"
           alt={sight.name}

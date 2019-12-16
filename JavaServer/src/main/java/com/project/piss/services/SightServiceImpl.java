@@ -37,7 +37,7 @@ public class SightServiceImpl implements SightService {
     @Override
     public List<Sight> findAll() {
         List<Sight> sights = repository.findSights(false);
-        sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
+        sights.forEach(sight -> sight.setPicturePath(sight.getPicturePath()));
         return sights;
     }
 
@@ -56,7 +56,7 @@ public class SightServiceImpl implements SightService {
             sights = repository.findSights(false);
         }
 
-        sights.forEach(sight -> sight.setPicturePath(URL + sight.getPicturePath()));
+        sights.forEach(sight -> sight.setPicturePath(sight.getPicturePath()));
 
         if (minRating.isPresent()) {
             int minRatingParam = minRating.get();

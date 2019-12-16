@@ -42,7 +42,7 @@ const SightInfo = ({ sight }) => {
             <div className="card-image">
               {
                 sight.picture_path &&
-                <img src={require(`../../../../resources/images/${sight.picture_path}`)} />
+                <img src={require(`resources/img2/${sight.picture_path}`)} />
               }
               <span className="card-title">{sight.name}</span>
               <Text bold>Рейтинг:</Text>
